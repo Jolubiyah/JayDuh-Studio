@@ -5,22 +5,41 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="JayDuh Studio — character art, illustrations, and thumbnails.">
   <title>JayDuh Studio</title>
+  
+  <!-- Preconnect to Google Fonts for improved performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header class="site-header">
-    <a class="logo" href="#home">JayDuh<span>Studio</span></a>
-    <nav>
+    <a class="logo" href="#home" aria-label="JayDuh Studio Home">
+      JayDuh<span>Studio</span>
+    </a>
+
+    <nav id="primary-nav" aria-label="Primary Navigation">
       <a href="#home">Home</a>
       <a href="#gallery">Art</a>
       <a href="#about">About</a>
       <a href="#support">Support</a>
-      <a class="nav-discord" data-link="discord" href="#">Discord ↗</a>
+      <a class="nav-discord" data-link="discord" href="#" target="_blank" rel="noopener noreferrer">
+        Discord <span aria-hidden="true">↗</span>
+      </a>
     </nav>
-    <button class="menu-btn" aria-label="Open menu">☰</button>
+
+    <button class="menu-btn" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="primary-nav">
+      <svg class="icon-menu" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <line x1="4" y1="7" x2="20" y2="7"></line>
+        <line x1="4" y1="12" x2="20" y2="12"></line>
+        <line x1="4" y1="17" x2="20" y2="17"></line>
+      </svg>
+    </button>
   </header>
 
   <main>
+    <!-- Hero Section -->
     <section id="home" class="hero">
       <div class="hero-copy">
         <span class="eyebrow">Digital Art • Characters • Thumbnails</span>
@@ -28,16 +47,18 @@
         <p class="hero-text">A collection of my original artwork, character designs, and content thumbnails.</p>
         <div class="hero-actions">
           <a class="button primary" href="#gallery">View my art</a>
-          <a class="button secondary" data-link="discord" href="#">Join the Discord</a>
+          <a class="button secondary" data-link="discord" href="#" target="_blank" rel="noopener noreferrer">Join the Discord</a>
         </div>
       </div>
-      <div class="hero-mark">
+
+      <div class="hero-mark" aria-hidden="true">
         <div class="orb"></div>
         <div class="hero-j">J</div>
         <div class="hero-label">JD</div>
       </div>
     </section>
 
+    <!-- Gallery Section -->
     <section id="gallery" class="section">
       <div class="section-heading">
         <div>
@@ -47,17 +68,18 @@
         <p class="section-note">Click any piece to view full size.</p>
       </div>
 
-      <div class="category-tabs" role="tablist">
-        <button class="tab active" data-category="headshots">Headshots</button>
-        <button class="tab" data-category="half-body">Half Body</button>
-        <button class="tab" data-category="full-body">Full Body</button>
-        <button class="tab" data-category="thumbnails">Thumbnails</button>
+      <div class="category-tabs" role="tablist" aria-label="Artwork categories">
+        <button class="tab active" role="tab" aria-selected="true" data-category="headshots">Headshots</button>
+        <button class="tab" role="tab" aria-selected="false" data-category="half-body">Half Body</button>
+        <button class="tab" role="tab" aria-selected="false" data-category="full-body">Full Body</button>
+        <button class="tab" role="tab" aria-selected="false" data-category="thumbnails">Thumbnails</button>
       </div>
 
-      <div id="gallery-grid" class="gallery-grid"></div>
+      <div id="gallery-grid" class="gallery-grid" role="region" aria-live="polite"></div>
       <p id="empty-message" class="empty-message">No artwork added yet.</p>
     </section>
 
+    <!-- About Section -->
     <section id="about" class="section about">
       <div>
         <span class="eyebrow">About</span>
@@ -69,35 +91,43 @@
       </div>
     </section>
 
+    <!-- Support Section -->
     <section id="support" class="support">
       <div class="support-inner">
         <span class="eyebrow">Support the Art</span>
         <h2>Like what you see?</h2>
-        <p>If you want to support my work or stay updated, connect with me below.</p>
+        <p class="support-text">If you want to support my work or stay updated, connect with me below.</p>
+        
         <div class="support-cards">
-          <a class="support-card" data-link="discord" href="#">
-            <span class="card-icon">◈</span>
-            <div>
+          <a class="support-card" data-link="discord" href="#" target="_blank" rel="noopener noreferrer">
+            <span class="card-icon" aria-hidden="true">
+              <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </span>
+            <div class="card-content">
               <strong>Discord</strong>
               <small>Come hang out</small>
             </div>
-            <span class="arrow">↗</span>
+            <span class="arrow" aria-hidden="true">↗</span>
           </a>
-          <a class="support-card" data-link="cashapp" href="#">
-            <span class="card-icon">$</span>
-            <div>
+
+          <a class="support-card" data-link="cashapp" href="#" target="_blank" rel="noopener noreferrer">
+            <span class="card-icon" aria-hidden="true">$</span>
+            <div class="card-content">
               <strong>Cash App</strong>
               <small>Direct tip / pay</small>
             </div>
-            <span class="arrow">↗</span>
+            <span class="arrow" aria-hidden="true">↗</span>
           </a>
-          <a class="support-card" data-link="cashapp" href="#">
-            <span class="card-icon">♡</span>
-            <div>
+
+          <a class="support-card" data-link="cashapp" href="#" target="_blank" rel="noopener noreferrer">
+            <span class="card-icon" aria-hidden="true">♥</span>
+            <div class="card-content">
               <strong>Donations</strong>
               <small>Every bit helps</small>
             </div>
-            <span class="arrow">↗</span>
+            <span class="arrow" aria-hidden="true">↗</span>
           </a>
         </div>
       </div>
@@ -105,13 +135,16 @@
   </main>
 
   <footer>
-    <span>© <span id="year"></span> JayDuh Studio</span>
-    <span>Made by JayDuh</span>
+    <div class="footer-inner">
+      <span>© <span id="year"></span> JayDuh Studio</span>
+      <span>Made by JayDuh</span>
+    </div>
   </footer>
 
-  <div id="lightbox" class="lightbox" aria-hidden="true">
-    <button class="lightbox-close" aria-label="Close">×</button>
-    <button class="lightbox-prev" aria-label="Previous">‹</button>
+  <!-- Lightbox Modal -->
+  <dialog id="lightbox" class="lightbox" aria-label="Artwork detail view">
+    <button class="lightbox-close" aria-label="Close modal">✕</button>
+    <button class="lightbox-prev" aria-label="Previous artwork">‹</button>
     <div class="lightbox-content">
       <img id="lightbox-image" src="" alt="">
       <div class="lightbox-caption">
@@ -119,11 +152,11 @@
         <span id="lightbox-category"></span>
       </div>
     </div>
-    <button class="lightbox-next" aria-label="Next">›</button>
-  </div>
+    <button class="lightbox-next" aria-label="Next artwork">›</button>
+  </dialog>
 
-  <script src="config.js"></script>
-  <script src="gallery.js"></script>
-  <script src="script.js"></script>
+  <script src="config.js" defer></script>
+  <script src="gallery.js" defer></script>
+  <script src="script.js" defer></script>
 </body>
 </html>
