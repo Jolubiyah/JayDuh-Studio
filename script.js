@@ -20,7 +20,8 @@ function renderGallery(category) {
   currentIndex = 0;
   grid.innerHTML = "";
 
-  const pieces = GALLERY[category] || [];
+  const galleryData = (typeof GALLERY !== "undefined") ? GALLERY : {};
+  const pieces = galleryData[category] || [];
   emptyMessage.classList.toggle("show", pieces.length === 0);
 
   pieces.forEach((piece, index) => {
@@ -30,7 +31,7 @@ function renderGallery(category) {
       <img src="assets/${category}/${piece.file}" alt="${escapeHtml(piece.title)}" loading="lazy">
       <div class="art-info">
         <strong>${escapeHtml(piece.title)}</strong>
-        <span>${categoryNames[category]}</span>
+        <span>${categoryNames[category] || category}</span>
       </div>
     `;
     card.addEventListener("click", () => openLightbox(index));
@@ -39,7 +40,8 @@ function renderGallery(category) {
 }
 
 function openLightbox(index) {
-  const pieces = GALLERY[currentCategory] || [];
+  const galleryData = (typeof GALLERY !== "undefined") ? GALLERY : {};
+  const pieces = galleryData[currentCategory] || [];
   if (!pieces.length) return;
 
   currentIndex = index;
@@ -47,7 +49,7 @@ function openLightbox(index) {
   lightboxImage.src = `assets/${currentCategory}/${piece.file}`;
   lightboxImage.alt = piece.title;
   lightboxTitle.textContent = piece.title;
-  lightboxCategory.textContent = categoryNames[currentCategory];
+  lightboxCategory.textContent = categoryNames[currentCategory] || currentCategory;
   lightbox.classList.add("open");
   lightbox.setAttribute("aria-hidden", "false");
   document.body.style.overflow = "hidden";
@@ -60,7 +62,8 @@ function closeLightbox() {
 }
 
 function moveLightbox(direction) {
-  const pieces = GALLERY[currentCategory] || [];
+  const galleryData = (typeof GALLERY !== "undefined") ? GALLERY : {};
+  const pieces = galleryData[currentCategory] || [];
   if (!pieces.length) return;
   currentIndex = (currentIndex + direction + pieces.length) % pieces.length;
   openLightbox(currentIndex);
@@ -95,20 +98,27 @@ document.addEventListener("keydown", e => {
   if (e.key === "ArrowRight") moveLightbox(1);
 });
 
-document.querySelectorAll("[data-link]").forEach(link => {
-  const type = link.dataset.link;
-  link.href = SITE_CONFIG[type] || "#";
-  if (SITE_CONFIG[type] && SITE_CONFIG[type] !== "#") {
-    link.target = "_blank";
-    link.rel = "noopener noreferrer";
-  }
-});
+if (typeof SITE_CONFIG !== "undefined") {
+  document.querySelectorAll("[data-link]").forEach(link => {
+    const type = link.dataset.link;
+    link.href = SITE_CONFIG[type] || "#";
+    if (SITE_CONFIG[type] && SITE_CONFIG[type] !== "#") {
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+    }
+  });
+}
 
-document.getElementById("year").textContent = new Date().getFullYear();
+const yearEl = document.getElementById("year");
+if (yearEl) {
+  yearEl.textContent = new Date().getFullYear();
+}
 
 const menuButton = document.querySelector(".menu-btn");
 const nav = document.querySelector("nav");
-menuButton.addEventListener("click", () => nav.classList.toggle("open"));
-nav.querySelectorAll("a").forEach(a => a.addEventListener("click", () => nav.classList.remove("open")));
+if (menuButton && nav) {
+  menuButton.addEventListener("click", () => nav.classList.toggle("open"));
+  nav.querySelectorAll("a").forEach(a => a.addEventListener("click", () => nav.classList.remove("open")));
+}
 
 renderGallery("headshots");
