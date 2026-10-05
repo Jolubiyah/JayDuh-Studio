@@ -15,7 +15,7 @@
   Supported image types include .png, .jpg, .jpeg, .webp, and .gif.
 */
 
-const GALLERY = {
+var GALLERY = {
   headshots: [
     { title: "Clowwy", file: "Clowwy.png" },
     { title: "Wanno", file: "Wanno.png" },
