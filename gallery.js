@@ -22,7 +22,7 @@ const GALLERY = {
     { title: "Sin", file: "Sin.png" },
     { title: "Adm1n", file: "Adm1n.png" },
     { title: "Done", file: "Done.png" },
-    { title: "Plaq", file: "Plaq.png" },
+    { title: "Plaq", file: "Plaq.png" }
   ],
 
   "half-body": [
@@ -30,7 +30,7 @@ const GALLERY = {
     { title: "Green Tie", file: "image - 2026-09-21T165015.959.png" },
     { title: "Butterflies", file: "image (86).png" },
     { title: "Crowned Kitty", file: "image (83).png" },
-    { title: "Venti", file: "Venti (1).png" },
+    { title: "Venti", file: "Venti (1).png" }
   ],
 
   "full-body": [
@@ -38,10 +38,10 @@ const GALLERY = {
     { title: "Looking Up", file: "image (96).png" },
     { title: "Crowned", file: "image (56).png" },
     { title: "Spicify", file: "Spicify.png" },
-    { title: "BakU", file: "BakU.png" },
+    { title: "BakU", file: "BakU.png" }
   ],
 
   thumbnails: [
-    // { title: "Example Thumbnail", file: "example.png" },
+    { title: "Adm1n Gun", file: "Adm1n_2.png" }
   ]
 };
