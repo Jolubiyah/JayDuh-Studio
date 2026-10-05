@@ -3,160 +3,495 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="JayDuh Studio — character art, illustrations, and thumbnails.">
+
+  <meta
+    name="description"
+    content="JayDuh Studio — character art, illustrations, and thumbnails."
+  >
+
   <title>JayDuh Studio</title>
-  
-  <!-- Preconnect to Google Fonts for improved performance -->
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-  
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
+
+  <div class="page-glow page-glow-one"></div>
+  <div class="page-glow page-glow-two"></div>
+
+  <!-- NAVIGATION -->
   <header class="site-header">
-    <a class="logo" href="#home" aria-label="JayDuh Studio Home">
-      JayDuh<span>Studio</span>
-    </a>
 
-    <nav id="primary-nav" aria-label="Primary Navigation">
-      <a href="#home">Home</a>
-      <a href="#gallery">Art</a>
-      <a href="#about">About</a>
-      <a href="#support">Support</a>
-      <a class="nav-discord" data-link="discord" href="#" target="_blank" rel="noopener noreferrer">
-        Discord <span aria-hidden="true">↗</span>
+    <div class="header-inner">
+
+      <a class="logo" href="#home" aria-label="JayDuh Studio Home">
+        <span class="logo-main">JayDuh</span>
+        <span class="logo-sub">STUDIO</span>
       </a>
-    </nav>
 
-    <button class="menu-btn" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="primary-nav">
-      <svg class="icon-menu" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-        <line x1="4" y1="7" x2="20" y2="7"></line>
-        <line x1="4" y1="12" x2="20" y2="12"></line>
-        <line x1="4" y1="17" x2="20" y2="17"></line>
-      </svg>
-    </button>
+      <nav id="primary-nav" aria-label="Primary Navigation">
+
+        <a href="#home">Home</a>
+        <a href="#gallery">Work</a>
+        <a href="#about">About</a>
+        <a href="#support">Support</a>
+
+        <a
+          class="nav-discord"
+          data-link="discord"
+          href="#"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Discord
+          <span aria-hidden="true">↗</span>
+        </a>
+
+      </nav>
+
+      <button
+        class="menu-btn"
+        aria-label="Toggle navigation menu"
+        aria-expanded="false"
+        aria-controls="primary-nav"
+      >
+        <svg
+          class="icon-menu"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+          stroke-linecap="round"
+        >
+          <line x1="4" y1="7" x2="20" y2="7"></line>
+          <line x1="4" y1="12" x2="20" y2="12"></line>
+          <line x1="4" y1="17" x2="20" y2="17"></line>
+        </svg>
+      </button>
+
+    </div>
+
   </header>
 
+
   <main>
-    <!-- Hero Section -->
+
+    <!-- HERO -->
     <section id="home" class="hero">
-      <div class="hero-copy">
-        <span class="eyebrow">Digital Art • Characters • Thumbnails</span>
-        <h1>Welcome to<br><span>JayDuh Studio.</span></h1>
-        <p class="hero-text">A collection of my original artwork, character designs, and content thumbnails.</p>
-        <div class="hero-actions">
-          <a class="button primary" href="#gallery">View my art</a>
-          <a class="button secondary" data-link="discord" href="#" target="_blank" rel="noopener noreferrer">Join the Discord</a>
+
+      <div class="hero-inner">
+
+        <div class="hero-copy">
+
+          <div class="hero-kicker">
+            <span class="kicker-line"></span>
+            DIGITAL ARTIST / CHARACTER DESIGNER
+          </div>
+
+          <h1>
+            Art with
+            <span>character.</span>
+          </h1>
+
+          <p class="hero-text">
+            Original characters, illustrations, thumbnails, and whatever else
+            I feel like creating.
+          </p>
+
+          <div class="hero-actions">
+
+            <a class="button primary" href="#gallery">
+              Explore the work
+              <span>↓</span>
+            </a>
+
+            <a
+              class="button secondary"
+              data-link="discord"
+              href="#"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Join the Discord
+              <span>↗</span>
+            </a>
+
+          </div>
+
+          <div class="hero-meta">
+
+            <div>
+              <strong>01</strong>
+              <span>CHARACTERS</span>
+            </div>
+
+            <div>
+              <strong>02</strong>
+              <span>ILLUSTRATION</span>
+            </div>
+
+            <div>
+              <strong>03</strong>
+              <span>THUMBNAILS</span>
+            </div>
+
+          </div>
+
         </div>
+
+
+        <!-- HERO ART -->
+        <div class="hero-art" aria-hidden="true">
+
+          <div class="hero-art-main">
+            <img
+              src="assets/headshots/Clowwy.png"
+              alt=""
+            >
+          </div>
+
+          <div class="hero-art-secondary">
+            <img
+              src="assets/full-body/Spicify.png"
+              alt=""
+            >
+          </div>
+
+          <div class="hero-art-label">
+            <span>JDS</span>
+            <small>SELECTED WORK</small>
+          </div>
+
+          <div class="hero-art-number">
+            01
+          </div>
+
+        </div>
+
       </div>
 
-      <div class="hero-mark" aria-hidden="true">
-        <div class="orb"></div>
-        <div class="hero-j">J</div>
-        <div class="hero-label">JD</div>
+      <div class="scroll-indicator">
+        <span></span>
+        SCROLL TO EXPLORE
       </div>
+
     </section>
 
-    <!-- Gallery Section -->
-    <section id="gallery" class="section">
+
+    <!-- GALLERY -->
+    <section id="gallery" class="section gallery-section">
+
       <div class="section-heading">
+
         <div>
-          <span class="eyebrow">The Gallery</span>
-          <h2>My work</h2>
+
+          <div class="section-number">
+            <span>01</span>
+            SELECTED WORK
+          </div>
+
+          <h2>My work<span>.</span></h2>
+
         </div>
-        <p class="section-note">Click any piece to view full size.</p>
+
+        <p class="section-note">
+          A collection of characters, illustrations, and thumbnails.
+        </p>
+
       </div>
 
-      <div class="category-tabs" role="tablist" aria-label="Artwork categories">
-        <button class="tab active" role="tab" aria-selected="true" data-category="headshots">Headshots</button>
-        <button class="tab" role="tab" aria-selected="false" data-category="half-body">Half Body</button>
-        <button class="tab" role="tab" aria-selected="false" data-category="full-body">Full Body</button>
-        <button class="tab" role="tab" aria-selected="false" data-category="thumbnails">Thumbnails</button>
+
+      <div
+        class="category-tabs"
+        role="tablist"
+        aria-label="Artwork categories"
+      >
+
+        <button
+          class="tab active"
+          role="tab"
+          aria-selected="true"
+          data-category="headshots"
+        >
+          Headshots
+        </button>
+
+        <button
+          class="tab"
+          role="tab"
+          aria-selected="false"
+          data-category="half-body"
+        >
+          Half Body
+        </button>
+
+        <button
+          class="tab"
+          role="tab"
+          aria-selected="false"
+          data-category="full-body"
+        >
+          Full Body
+        </button>
+
+        <button
+          class="tab"
+          role="tab"
+          aria-selected="false"
+          data-category="thumbnails"
+        >
+          Thumbnails
+        </button>
+
       </div>
 
-      <div id="gallery-grid" class="gallery-grid" role="region" aria-live="polite"></div>
-      <p id="empty-message" class="empty-message">No artwork added yet.</p>
+
+      <div
+        id="gallery-grid"
+        class="gallery-grid"
+        role="region"
+        aria-live="polite"
+      ></div>
+
+      <p id="empty-message" class="empty-message">
+        No artwork added yet.
+      </p>
+
     </section>
 
-    <!-- About Section -->
+
+    <!-- ABOUT -->
     <section id="about" class="section about">
-      <div>
-        <span class="eyebrow">About</span>
-        <h2>Hey, I'm JayDuh.</h2>
+
+      <div class="section-number">
+        <span>02</span>
+        ABOUT THE ARTIST
       </div>
-      <div class="about-copy">
-        <p>I'm an artist focused on character art, illustrations, and thumbnails. This site serves as my main portfolio and central place to archive my work.</p>
-        <p>New pieces get added periodically, so check back anytime.</p>
+
+      <div class="about-layout">
+
+        <div class="about-title">
+          <h2>
+            Made by
+            <span>JayDuh.</span>
+          </h2>
+        </div>
+
+        <div class="about-copy">
+
+          <p class="about-lead">
+            I'm an artist focused on character art, illustrations, and
+            thumbnails.
+          </p>
+
+          <p>
+            JayDuh Studio is my place to collect the things I create,
+            experiment with new ideas, and give my artwork somewhere to live.
+          </p>
+
+          <div class="about-signature">
+            <span>J</span>
+            <div>
+              <strong>JayDuh Studio</strong>
+              <small>ART / DESIGN / CREATION</small>
+            </div>
+          </div>
+
+        </div>
+
       </div>
+
     </section>
 
-    <!-- Support Section -->
+
+    <!-- SUPPORT -->
     <section id="support" class="support">
+
       <div class="support-inner">
-        <span class="eyebrow">Support the Art</span>
-        <h2>Like what you see?</h2>
-        <p class="support-text">If you want to support my work or stay updated, connect with me below.</p>
-        
+
+        <div class="section-number">
+          <span>03</span>
+          SUPPORT THE STUDIO
+        </div>
+
+        <div class="support-heading">
+
+          <h2>
+            Want to support
+            <span>the art?</span>
+          </h2>
+
+          <p>
+            Hang out, support the work, or just follow along.
+          </p>
+
+        </div>
+
+
         <div class="support-cards">
-          <a class="support-card" data-link="discord" href="#" target="_blank" rel="noopener noreferrer">
-            <span class="card-icon" aria-hidden="true">
-              <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
+
+          <a
+            class="support-card"
+            data-link="discord"
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+
+            <span class="card-number">01</span>
+
+            <span class="card-icon discord-icon">
+              ↗
             </span>
+
             <div class="card-content">
               <strong>Discord</strong>
               <small>Come hang out</small>
             </div>
-            <span class="arrow" aria-hidden="true">↗</span>
+
+            <span class="arrow">↗</span>
+
           </a>
 
-          <a class="support-card" data-link="cashapp" href="#" target="_blank" rel="noopener noreferrer">
-            <span class="card-icon" aria-hidden="true">$</span>
+
+          <a
+            class="support-card"
+            data-link="cashapp"
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+
+            <span class="card-number">02</span>
+
+            <span class="card-icon">
+              $
+            </span>
+
             <div class="card-content">
               <strong>Cash App</strong>
               <small>Direct tip / pay</small>
             </div>
-            <span class="arrow" aria-hidden="true">↗</span>
+
+            <span class="arrow">↗</span>
+
           </a>
 
-          <a class="support-card" data-link="cashapp" href="#" target="_blank" rel="noopener noreferrer">
-            <span class="card-icon" aria-hidden="true">♥</span>
+
+          <a
+            class="support-card"
+            data-link="cashapp"
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+
+            <span class="card-number">03</span>
+
+            <span class="card-icon">
+              +
+            </span>
+
             <div class="card-content">
               <strong>Donations</strong>
               <small>Every bit helps</small>
             </div>
-            <span class="arrow" aria-hidden="true">↗</span>
+
+            <span class="arrow">↗</span>
+
           </a>
+
         </div>
+
       </div>
+
     </section>
+
   </main>
 
+
+  <!-- FOOTER -->
   <footer>
+
     <div class="footer-inner">
-      <span>© <span id="year"></span> JayDuh Studio</span>
-      <span>Made by JayDuh</span>
+
+      <div class="footer-brand">
+        <strong>JayDuh<span>Studio</span></strong>
+        <small>Digital art & character design</small>
+      </div>
+
+      <span>
+        © <span id="year"></span> JayDuh Studio
+      </span>
+
+      <span>
+        Made by JayDuh
+      </span>
+
     </div>
+
   </footer>
 
-  <!-- Lightbox Modal -->
+
+  <!-- LIGHTBOX -->
   <dialog id="lightbox" class="lightbox" aria-label="Artwork detail view">
-    <button class="lightbox-close" aria-label="Close modal">✕</button>
-    <button class="lightbox-prev" aria-label="Previous artwork">‹</button>
+
+    <button
+      class="lightbox-close"
+      aria-label="Close modal"
+    >
+      ✕
+    </button>
+
+    <button
+      class="lightbox-prev"
+      aria-label="Previous artwork"
+    >
+      ‹
+    </button>
+
     <div class="lightbox-content">
-      <img id="lightbox-image" src="" alt="">
-      <div class="lightbox-caption">
-        <strong id="lightbox-title"></strong>
-        <span id="lightbox-category"></span>
+
+      <div class="lightbox-image-wrap">
+        <img id="lightbox-image" src="" alt="">
       </div>
+
+      <div class="lightbox-caption">
+
+        <div>
+          <span>JAYDUH STUDIO</span>
+          <strong id="lightbox-title"></strong>
+        </div>
+
+        <span id="lightbox-category"></span>
+
+      </div>
+
     </div>
-    <button class="lightbox-next" aria-label="Next artwork">›</button>
+
+    <button
+      class="lightbox-next"
+      aria-label="Next artwork"
+    >
+      ›
+    </button>
+
   </dialog>
+
 
   <script src="config.js" defer></script>
   <script src="gallery.js" defer></script>
   <script src="script.js" defer></script>
+
 </body>
 </html>
