@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="1100" viewBox="0 0 900 1100">
+<rect width="900" height="1100" fill="#15171e"/>
+<circle cx="450" cy="440" r="190" fill="#242832"/>
+<path d="M280 860 Q450 650 620 860" fill="none" stroke="#777c89" stroke-width="20"/>
+<text x="450" y="960" fill="#9699a5" font-family="Arial" font-size="38" text-anchor="middle">YOUR ART GOES HERE</text>
+</svg>
