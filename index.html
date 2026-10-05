@@ -4,494 +4,1989 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta
-    name="description"
-    content="JayDuh Studio — character art, illustrations, and thumbnails."
-  >
-
-  <title>JayDuh Studio</title>
+  <title>JayDuh Studio — Art & Character Design</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
   <link
-    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap"
+    href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap"
     rel="stylesheet"
   >
 
-  <link rel="stylesheet" href="style.css">
+  <style>
+
+    :root {
+      --black: #050505;
+      --black-2: #090909;
+      --white: #f2f0eb;
+      --gray: #858582;
+      --gray-2: #555552;
+
+      --purple: #7768ff;
+      --purple-light: #a59dff;
+
+      --line: rgba(255,255,255,.11);
+      --line-soft: rgba(255,255,255,.055);
+
+      --ease: cubic-bezier(.16,1,.3,1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background: var(--black);
+    }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: "DM Sans", sans-serif;
+      overflow-x: hidden;
+    }
+
+    body::selection {
+      background: var(--purple);
+      color: white;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+
+    /* ================================
+       GLOBAL
+    ================================= */
+
+    .noise {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      pointer-events: none;
+      opacity: .035;
+
+      background-image:
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E");
+    }
+
+    .container {
+      width: min(1380px, calc(100% - 64px));
+      margin: auto;
+    }
+
+    .mono {
+      font-family: "DM Mono", monospace;
+    }
+
+    .eyebrow {
+      color: var(--gray);
+      font-family: "DM Mono", monospace;
+      font-size: 10px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+
+    .purple {
+      color: var(--purple-light);
+    }
+
+
+    /* ================================
+       HEADER
+    ================================= */
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+
+      padding: 24px 32px;
+
+      mix-blend-mode: normal;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      max-width: 1440px;
+      margin: auto;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+
+      font-family: "Manrope", sans-serif;
+      font-weight: 800;
+      letter-spacing: -.05em;
+      font-size: 18px;
+    }
+
+    .brand-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--purple);
+
+      box-shadow: 0 0 20px var(--purple);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .nav-links a {
+      color: #aaa;
+      font-family: "DM Mono", monospace;
+      font-size: 10px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+
+      transition: color .25s ease;
+    }
+
+    .nav-links a:hover {
+      color: white;
+    }
+
+    .nav-contact {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+
+      padding: 9px 14px;
+
+      border: 1px solid var(--line);
+      border-radius: 100px;
+
+      background: rgba(255,255,255,.035);
+    }
+
+    .nav-contact span {
+      color: var(--purple-light);
+    }
+
+
+    /* ================================
+       HERO
+    ================================= */
+
+    .hero {
+      position: relative;
+      min-height: 100vh;
+
+      display: flex;
+      align-items: center;
+
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+
+      position: absolute;
+      width: 700px;
+      height: 700px;
+
+      right: -220px;
+      top: -180px;
+
+      border-radius: 50%;
+
+      background: var(--purple);
+      filter: blur(180px);
+
+      opacity: .07;
+    }
+
+    .hero::after {
+      content: "";
+
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+
+      height: 250px;
+
+      background: linear-gradient(
+        transparent,
+        var(--black)
+      );
+
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+
+      width: min(1380px, calc(100% - 64px));
+      margin: auto;
+
+      padding-top: 90px;
+    }
+
+    .hero-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+
+      margin-bottom: 45px;
+    }
+
+    .hero-intro {
+      max-width: 330px;
+
+      color: var(--gray);
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    .hero-year {
+      color: var(--gray-2);
+
+      font-family: "DM Mono", monospace;
+      font-size: 11px;
+      letter-spacing: .15em;
+    }
+
+    .hero-title {
+      position: relative;
+
+      font-family: "Manrope", sans-serif;
+      font-size: clamp(90px, 15vw, 235px);
+      font-weight: 800;
+      line-height: .76;
+      letter-spacing: -.105em;
+
+      white-space: nowrap;
+    }
+
+    .hero-title .outline {
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(255,255,255,.55);
+    }
+
+    .hero-title .purple-word {
+      color: var(--purple);
+      text-shadow: 0 0 100px rgba(119,104,255,.18);
+    }
+
+    .hero-art {
+      position: relative;
+
+      width: min(560px, 47vw);
+      height: 420px;
+
+      margin-left: auto;
+      margin-top: -45px;
+      margin-right: 5vw;
+    }
+
+    .hero-card {
+      position: absolute;
+
+      width: 280px;
+      height: 370px;
+
+      overflow: hidden;
+
+      background: #111;
+
+      border: 1px solid var(--line);
+
+      box-shadow: 0 40px 100px rgba(0,0,0,.6);
+    }
+
+    .hero-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+
+      transition: transform 1s var(--ease);
+    }
+
+    .hero-card:hover img {
+      transform: scale(1.06);
+    }
+
+    .hero-card-one {
+      right: 130px;
+      top: 0;
+
+      transform: rotate(3deg);
+      z-index: 2;
+    }
+
+    .hero-card-two {
+      right: 0;
+      top: 80px;
+
+      transform: rotate(9deg);
+      opacity: .55;
+
+      z-index: 1;
+    }
+
+    .hero-card-label {
+      position: absolute;
+
+      left: 15px;
+      bottom: 15px;
+
+      z-index: 3;
+
+      color: white;
+
+      font-family: "DM Mono", monospace;
+      font-size: 8px;
+      letter-spacing: .14em;
+
+      text-transform: uppercase;
+    }
+
+    .hero-card-label span {
+      color: var(--purple-light);
+    }
+
+    .hero-index {
+      position: absolute;
+
+      right: 0;
+      bottom: 35px;
+
+      color: rgba(255,255,255,.12);
+
+      font-family: "Manrope", sans-serif;
+      font-size: 100px;
+      font-weight: 800;
+
+      line-height: .8;
+    }
+
+    .scroll {
+      position: absolute;
+
+      bottom: 30px;
+      left: 32px;
+
+      z-index: 5;
+
+      display: flex;
+      align-items: center;
+      gap: 12px;
+
+      color: var(--gray);
+
+      font-family: "DM Mono", monospace;
+      font-size: 8px;
+      letter-spacing: .15em;
+    }
+
+    .scroll-line {
+      width: 45px;
+      height: 1px;
+
+      background: var(--gray-2);
+    }
+
+
+    /* ================================
+       MARQUEE
+    ================================= */
+
+    .marquee {
+      overflow: hidden;
+
+      padding: 23px 0;
+
+      border-top: 1px solid var(--line-soft);
+      border-bottom: 1px solid var(--line-soft);
+
+      white-space: nowrap;
+    }
+
+    .marquee-track {
+      display: inline-flex;
+      align-items: center;
+
+      animation: marquee 25s linear infinite;
+    }
+
+    .marquee-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 30px;
+
+      padding-right: 30px;
+
+      color: #67676a;
+
+      font-family: "Manrope", sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+
+      letter-spacing: .05em;
+      text-transform: uppercase;
+    }
+
+    .marquee-item i {
+      width: 5px;
+      height: 5px;
+
+      background: var(--purple);
+
+      border-radius: 50%;
+    }
+
+    @keyframes marquee {
+      from {
+        transform: translateX(0);
+      }
+
+      to {
+        transform: translateX(-50%);
+      }
+    }
+
+
+    /* ================================
+       INTRO
+    ================================= */
+
+    .intro {
+      padding: 180px 0;
+    }
+
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 70px;
+    }
+
+    .intro-number {
+      color: var(--purple);
+
+      font-family: "DM Mono", monospace;
+      font-size: 12px;
+    }
+
+    .intro-copy {
+      max-width: 900px;
+    }
+
+    .intro-copy h2 {
+      margin-bottom: 35px;
+
+      font-family: "Manrope", sans-serif;
+      font-size: clamp(45px, 6vw, 90px);
+      line-height: .95;
+      letter-spacing: -.075em;
+    }
+
+    .intro-copy h2 span {
+      color: var(--gray);
+    }
+
+    .intro-copy p {
+      max-width: 650px;
+
+      color: var(--gray);
+
+      font-size: 16px;
+      line-height: 1.8;
+    }
+
+
+    /* ================================
+       GALLERY
+    ================================= */
+
+    .work {
+      padding-bottom: 180px;
+    }
+
+    .work-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+
+      padding-bottom: 35px;
+
+      border-bottom: 1px solid var(--line);
+    }
+
+    .work-heading h2 {
+      margin-top: 12px;
+
+      font-family: "Manrope", sans-serif;
+      font-size: clamp(55px, 8vw, 110px);
+      line-height: .8;
+      letter-spacing: -.085em;
+    }
+
+    .work-heading h2 span {
+      color: var(--purple);
+    }
+
+    .work-description {
+      width: 260px;
+
+      color: var(--gray);
+
+      font-size: 12px;
+      line-height: 1.7;
+    }
+
+    .filters {
+      display: flex;
+      gap: 8px;
+
+      padding: 20px 0 35px;
+
+      overflow-x: auto;
+    }
+
+    .filter {
+      flex-shrink: 0;
+
+      padding: 10px 16px;
+
+      color: var(--gray);
+
+      background: transparent;
+
+      border: 1px solid var(--line);
+      border-radius: 100px;
+
+      cursor: pointer;
+
+      font-family: "DM Mono", monospace;
+      font-size: 9px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+
+      transition: .25s ease;
+    }
+
+    .filter:hover {
+      color: white;
+      border-color: rgba(255,255,255,.3);
+    }
+
+    .filter.active {
+      color: #080808;
+      background: white;
+      border-color: white;
+    }
+
+    .gallery {
+      display: grid;
+
+      grid-template-columns:
+        repeat(12, 1fr);
+
+      gap: 18px;
+    }
+
+    .piece {
+      position: relative;
+
+      overflow: hidden;
+
+      background: #111;
+
+      border: 1px solid var(--line);
+
+      cursor: pointer;
+
+      transition:
+        transform .6s var(--ease),
+        border-color .4s ease;
+    }
+
+    .piece:hover {
+      transform: translateY(-7px);
+      border-color: rgba(255,255,255,.25);
+    }
+
+    .piece:nth-child(1) {
+      grid-column: span 7;
+      aspect-ratio: 1.15 / 1;
+    }
+
+    .piece:nth-child(2) {
+      grid-column: span 5;
+      aspect-ratio: .9 / 1;
+    }
+
+    .piece:nth-child(3) {
+      grid-column: span 4;
+      aspect-ratio: .85 / 1;
+    }
+
+    .piece:nth-child(4) {
+      grid-column: span 4;
+      aspect-ratio: .85 / 1;
+    }
+
+    .piece:nth-child(5) {
+      grid-column: span 4;
+      aspect-ratio: .85 / 1;
+    }
+
+    .piece:nth-child(n+6) {
+      grid-column: span 4;
+      aspect-ratio: 1 / 1.15;
+    }
+
+    .piece img {
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+
+      transition:
+        transform 1s var(--ease),
+        filter .5s ease;
+    }
+
+    .piece:hover img {
+      transform: scale(1.055);
+      filter: brightness(.72);
+    }
+
+    .piece-overlay {
+      position: absolute;
+      inset: 0;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      padding: 20px;
+
+      background:
+        linear-gradient(
+          to bottom,
+          rgba(0,0,0,.25),
+          transparent 35%,
+          rgba(0,0,0,.8)
+        );
+
+      opacity: 0;
+
+      transition: opacity .4s ease;
+    }
+
+    .piece:hover .piece-overlay {
+      opacity: 1;
+    }
+
+    .piece-index {
+      align-self: flex-end;
+
+      color: white;
+
+      font-family: "DM Mono", monospace;
+      font-size: 9px;
+    }
+
+    .piece-info strong {
+      display: block;
+
+      margin-bottom: 5px;
+
+      font-family: "Manrope", sans-serif;
+      font-size: 18px;
+    }
+
+    .piece-info span {
+      color: #aaa;
+
+      font-family: "DM Mono", monospace;
+      font-size: 8px;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+    }
+
+
+    /* ================================
+       ABOUT
+    ================================= */
+
+    .about {
+      padding: 150px 0;
+
+      border-top: 1px solid var(--line);
+    }
+
+    .about-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+
+      gap: 100px;
+
+      margin-top: 60px;
+    }
+
+    .about-title {
+      font-family: "Manrope", sans-serif;
+      font-size: clamp(50px, 7vw, 100px);
+      font-weight: 800;
+
+      line-height: .85;
+      letter-spacing: -.08em;
+    }
+
+    .about-title .outline {
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(255,255,255,.5);
+    }
+
+    .about-copy {
+      padding-top: 12px;
+    }
+
+    .about-copy p {
+      max-width: 520px;
+
+      color: var(--gray);
+
+      font-size: 16px;
+      line-height: 1.85;
+    }
+
+    .about-copy p + p {
+      margin-top: 25px;
+    }
+
+    .signature {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+
+      margin-top: 50px;
+      padding-top: 25px;
+
+      border-top: 1px solid var(--line);
+    }
+
+    .signature-mark {
+      display: grid;
+      place-items: center;
+
+      width: 45px;
+      height: 45px;
+
+      border: 1px solid var(--line);
+      border-radius: 50%;
+
+      color: var(--purple);
+
+      font-family: "Manrope", sans-serif;
+      font-weight: 800;
+    }
+
+    .signature-text {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .signature-text strong {
+      font-size: 12px;
+    }
+
+    .signature-text span {
+      color: var(--gray);
+
+      font-family: "DM Mono", monospace;
+      font-size: 8px;
+      letter-spacing: .12em;
+    }
+
+
+    /* ================================
+       SUPPORT
+    ================================= */
+
+    .support {
+      padding: 150px 0;
+
+      background:
+        radial-gradient(
+          circle at 70% 50%,
+          rgba(119,104,255,.11),
+          transparent 450px
+        );
+
+      border-top: 1px solid var(--line);
+    }
+
+    .support-heading {
+      display: grid;
+      grid-template-columns: 1fr 300px;
+
+      gap: 80px;
+
+      margin-top: 60px;
+    }
+
+    .support-heading h2 {
+      font-family: "Manrope", sans-serif;
+      font-size: clamp(55px, 8vw, 110px);
+      line-height: .82;
+      letter-spacing: -.085em;
+    }
+
+    .support-heading h2 span {
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(255,255,255,.55);
+    }
+
+    .support-heading p {
+      color: var(--gray);
+
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    .support-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+
+      gap: 15px;
+
+      margin-top: 70px;
+    }
+
+    .support-card {
+      position: relative;
+
+      min-height: 220px;
+
+      padding: 25px;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      background: #0d0d0e;
+
+      border: 1px solid var(--line);
+
+      transition:
+        transform .5s var(--ease),
+        background .3s ease,
+        border-color .3s ease;
+    }
+
+    .support-card:hover {
+      transform: translateY(-7px);
+
+      background: #111113;
+
+      border-color: rgba(119,104,255,.4);
+    }
+
+    .support-card-number {
+      color: var(--gray-2);
+
+      font-family: "DM Mono", monospace;
+      font-size: 9px;
+    }
+
+    .support-icon {
+      width: 42px;
+      height: 42px;
+
+      display: grid;
+      place-items: center;
+
+      border: 1px solid var(--line);
+      border-radius: 50%;
+
+      color: var(--purple-light);
+
+      font-size: 16px;
+    }
+
+    .support-card h3 {
+      margin-bottom: 5px;
+
+      font-family: "Manrope", sans-serif;
+      font-size: 18px;
+    }
+
+    .support-card p {
+      color: var(--gray);
+
+      font-size: 10px;
+    }
+
+    .support-arrow {
+      position: absolute;
+
+      right: 25px;
+      bottom: 25px;
+
+      color: var(--gray);
+
+      transition: transform .3s var(--ease);
+    }
+
+    .support-card:hover .support-arrow {
+      color: white;
+      transform: translate(4px,-4px);
+    }
+
+
+    /* ================================
+       FOOTER
+    ================================= */
+
+    footer {
+      padding: 40px 0;
+
+      border-top: 1px solid var(--line);
+    }
+
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      color: var(--gray);
+
+      font-family: "DM Mono", monospace;
+      font-size: 8px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+
+    /* ================================
+       LIGHTBOX
+    ================================= */
+
+    dialog {
+      width: min(1200px, 94vw);
+      max-height: 94vh;
+
+      padding: 0;
+
+      background: #080808;
+      color: white;
+
+      border: 1px solid var(--line);
+
+      box-shadow: 0 50px 150px rgba(0,0,0,.8);
+    }
+
+    dialog::backdrop {
+      background: rgba(0,0,0,.9);
+      backdrop-filter: blur(15px);
+    }
+
+    .lightbox-image {
+      width: 100%;
+      height: 80vh;
+
+      object-fit: contain;
+
+      background: #050505;
+    }
+
+    .lightbox-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      padding: 18px 25px;
+
+      border-top: 1px solid var(--line);
+    }
+
+    .lightbox-title {
+      font-family: "Manrope", sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    .lightbox-category {
+      color: var(--gray);
+
+      font-family: "DM Mono", monospace;
+      font-size: 8px;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+    }
+
+    .lightbox-close {
+      position: absolute;
+
+      top: 15px;
+      right: 15px;
+
+      width: 40px;
+      height: 40px;
+
+      color: white;
+
+      background: rgba(0,0,0,.7);
+
+      border: 1px solid var(--line);
+
+      border-radius: 50%;
+
+      cursor: pointer;
+    }
+
+
+    /* ================================
+       MOBILE
+    ================================= */
+
+    @media(max-width: 900px) {
+
+      .container,
+      .hero-inner {
+        width: min(100% - 40px, 1380px);
+      }
+
+      header {
+        padding: 18px 20px;
+      }
+
+      .nav-links a:not(.nav-contact) {
+        display: none;
+      }
+
+      .hero {
+        min-height: 900px;
+      }
+
+      .hero-title {
+        font-size: 18vw;
+        white-space: normal;
+      }
+
+      .hero-art {
+        width: 90vw;
+        margin-right: 0;
+      }
+
+      .intro-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+      }
+
+      .gallery {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .piece:nth-child(n) {
+        grid-column: span 1;
+        aspect-ratio: .82 / 1;
+      }
+
+      .about-layout {
+        grid-template-columns: 1fr;
+        gap: 60px;
+      }
+
+      .support-heading {
+        grid-template-columns: 1fr;
+      }
+
+      .support-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+
+    @media(max-width: 600px) {
+
+      .container,
+      .hero-inner {
+        width: calc(100% - 32px);
+      }
+
+      .hero {
+        min-height: 800px;
+      }
+
+      .hero-top {
+        margin-bottom: 30px;
+      }
+
+      .hero-title {
+        font-size: 21vw;
+      }
+
+      .hero-art {
+        height: 350px;
+        margin-top: 20px;
+      }
+
+      .hero-card {
+        width: 190px;
+        height: 270px;
+      }
+
+      .hero-card-one {
+        right: 65px;
+      }
+
+      .hero-card-two {
+        right: 0;
+        top: 50px;
+      }
+
+      .hero-index {
+        font-size: 70px;
+      }
+
+      .scroll {
+        left: 16px;
+      }
+
+      .intro,
+      .work,
+      .about,
+      .support {
+        padding: 100px 0;
+      }
+
+      .work-heading {
+        display: block;
+      }
+
+      .work-description {
+        margin-top: 25px;
+      }
+
+      .gallery {
+        grid-template-columns: 1fr;
+      }
+
+      .piece:nth-child(n) {
+        grid-column: span 1;
+        aspect-ratio: .85 / 1;
+      }
+
+      .piece-overlay {
+        opacity: 1;
+      }
+
+      .footer {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+      }
+
+    }
+
+  </style>
 </head>
+
 
 <body>
 
-  <div class="page-glow page-glow-one"></div>
-  <div class="page-glow page-glow-two"></div>
+<div class="noise"></div>
 
-  <!-- NAVIGATION -->
-  <header class="site-header">
 
-    <div class="header-inner">
+<header>
 
-      <a class="logo" href="#home" aria-label="JayDuh Studio Home">
-        <span class="logo-main">JayDuh</span>
-        <span class="logo-sub">STUDIO</span>
-      </a>
+  <nav class="nav">
 
-      <nav id="primary-nav" aria-label="Primary Navigation">
+    <a href="#home" class="brand">
+      <span class="brand-dot"></span>
+      JAYDUH STUDIO
+    </a>
 
-        <a href="#home">Home</a>
-        <a href="#gallery">Work</a>
-        <a href="#about">About</a>
-        <a href="#support">Support</a>
+    <div class="nav-links">
 
-        <a
-          class="nav-discord"
-          data-link="discord"
-          href="#"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Discord
-          <span aria-hidden="true">↗</span>
-        </a>
+      <a href="#work">Work</a>
+      <a href="#about">About</a>
+      <a href="#support">Support</a>
 
-      </nav>
-
-      <button
-        class="menu-btn"
-        aria-label="Toggle navigation menu"
-        aria-expanded="false"
-        aria-controls="primary-nav"
+      <a
+        class="nav-contact"
+        href="https://discord.com/users/jayduhart"
+        target="_blank"
       >
-        <svg
-          class="icon-menu"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="1.8"
-          stroke-linecap="round"
-        >
-          <line x1="4" y1="7" x2="20" y2="7"></line>
-          <line x1="4" y1="12" x2="20" y2="12"></line>
-          <line x1="4" y1="17" x2="20" y2="17"></line>
-        </svg>
-      </button>
+        Discord
+        <span>↗</span>
+      </a>
 
     </div>
 
-  </header>
+  </nav>
+
+</header>
 
 
-  <main>
+<main id="home">
 
-    <!-- HERO -->
-    <section id="home" class="hero">
 
-      <div class="hero-inner">
+  <!-- HERO -->
 
-        <div class="hero-copy">
+  <section class="hero">
 
-          <div class="hero-kicker">
-            <span class="kicker-line"></span>
-            DIGITAL ARTIST / CHARACTER DESIGNER
+    <div class="hero-inner">
+
+      <div class="hero-top">
+
+        <p class="hero-intro">
+          Digital artist creating characters,
+          illustrations, thumbnails and whatever
+          else happens to end up on the canvas.
+        </p>
+
+        <span class="hero-year">
+          2026 / JDS
+        </span>
+
+      </div>
+
+
+      <h1 class="hero-title">
+        JAY<span class="outline">DUH</span><br>
+        <span class="purple-word">STUDIO.</span>
+      </h1>
+
+
+      <div class="hero-art">
+
+        <div class="hero-card hero-card-one">
+
+          <img
+            src="Clowwy.png"
+            alt="Clowwy artwork"
+          >
+
+          <div class="hero-card-label">
+            <span>01</span> / HEADSHOT
           </div>
 
-          <h1>
-            Art with
-            <span>character.</span>
-          </h1>
+        </div>
 
-          <p class="hero-text">
-            Original characters, illustrations, thumbnails, and whatever else
-            I feel like creating.
+
+        <div class="hero-card hero-card-two">
+
+          <img
+            src="Spicify.png"
+            alt="Spicify artwork"
+          >
+
+        </div>
+
+
+        <div class="hero-index">
+          01
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="scroll">
+
+      <span class="scroll-line"></span>
+
+      SCROLL TO EXPLORE
+
+    </div>
+
+  </section>
+
+
+
+  <!-- MARQUEE -->
+
+  <div class="marquee">
+
+    <div class="marquee-track">
+
+      <div class="marquee-item">
+        CHARACTER ART
+        <i></i>
+      </div>
+
+      <div class="marquee-item">
+        DIGITAL ILLUSTRATION
+        <i></i>
+      </div>
+
+      <div class="marquee-item">
+        THUMBNAILS
+        <i></i>
+      </div>
+
+      <div class="marquee-item">
+        CHARACTER DESIGN
+        <i></i>
+      </div>
+
+      <div class="marquee-item">
+        CHARACTER ART
+        <i></i>
+      </div>
+
+      <div class="marquee-item">
+        DIGITAL ILLUSTRATION
+        <i></i>
+      </div>
+
+      <div class="marquee-item">
+        THUMBNAILS
+        <i></i>
+      </div>
+
+      <div class="marquee-item">
+        CHARACTER DESIGN
+        <i></i>
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+  <!-- INTRO -->
+
+  <section class="intro">
+
+    <div class="container">
+
+      <div class="intro-grid">
+
+        <span class="intro-number">
+          001
+        </span>
+
+        <div class="intro-copy">
+
+          <h2>
+            I make things
+            <span>people remember.</span>
+          </h2>
+
+          <p>
+            JayDuh Studio is a collection of my artwork,
+            characters and ideas. Some pieces are planned.
+            Some happen because I wanted to see what would
+            happen. Either way, this is where they end up.
           </p>
 
-          <div class="hero-actions">
-
-            <a class="button primary" href="#gallery">
-              Explore the work
-              <span>↓</span>
-            </a>
-
-            <a
-              class="button secondary"
-              data-link="discord"
-              href="#"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Join the Discord
-              <span>↗</span>
-            </a>
-
-          </div>
-
-          <div class="hero-meta">
-
-            <div>
-              <strong>01</strong>
-              <span>CHARACTERS</span>
-            </div>
-
-            <div>
-              <strong>02</strong>
-              <span>ILLUSTRATION</span>
-            </div>
-
-            <div>
-              <strong>03</strong>
-              <span>THUMBNAILS</span>
-            </div>
-
-          </div>
-
-        </div>
-
-
-        <!-- HERO ART -->
-        <div class="hero-art" aria-hidden="true">
-
-          <div class="hero-art-main">
-            <img
-              src="assets/headshots/Clowwy.png"
-              alt=""
-            >
-          </div>
-
-          <div class="hero-art-secondary">
-            <img
-              src="assets/full-body/Spicify.png"
-              alt=""
-            >
-          </div>
-
-          <div class="hero-art-label">
-            <span>JDS</span>
-            <small>SELECTED WORK</small>
-          </div>
-
-          <div class="hero-art-number">
-            01
-          </div>
-
         </div>
 
       </div>
 
-      <div class="scroll-indicator">
-        <span></span>
-        SCROLL TO EXPLORE
-      </div>
+    </div>
 
-    </section>
+  </section>
 
 
-    <!-- GALLERY -->
-    <section id="gallery" class="section gallery-section">
 
-      <div class="section-heading">
+  <!-- WORK -->
+
+  <section class="work" id="work">
+
+    <div class="container">
+
+      <div class="work-heading">
 
         <div>
 
-          <div class="section-number">
-            <span>01</span>
-            SELECTED WORK
-          </div>
+          <span class="eyebrow">
+            002 / Selected work
+          </span>
 
-          <h2>My work<span>.</span></h2>
+          <h2>
+            THE<br>
+            <span>GALLERY.</span>
+          </h2>
 
         </div>
 
-        <p class="section-note">
-          A collection of characters, illustrations, and thumbnails.
+        <p class="work-description">
+          Characters, illustrations and thumbnails
+          from the studio archive.
         </p>
 
       </div>
 
 
-      <div
-        class="category-tabs"
-        role="tablist"
-        aria-label="Artwork categories"
-      >
+      <div class="filters">
 
-        <button
-          class="tab active"
-          role="tab"
-          aria-selected="true"
-          data-category="headshots"
-        >
+        <button class="filter active" data-category="headshots">
           Headshots
         </button>
 
-        <button
-          class="tab"
-          role="tab"
-          aria-selected="false"
-          data-category="half-body"
-        >
+        <button class="filter" data-category="half-body">
           Half Body
         </button>
 
-        <button
-          class="tab"
-          role="tab"
-          aria-selected="false"
-          data-category="full-body"
-        >
+        <button class="filter" data-category="full-body">
           Full Body
         </button>
 
-        <button
-          class="tab"
-          role="tab"
-          aria-selected="false"
-          data-category="thumbnails"
-        >
+        <button class="filter" data-category="thumbnails">
           Thumbnails
         </button>
 
       </div>
 
 
-      <div
-        id="gallery-grid"
-        class="gallery-grid"
-        role="region"
-        aria-live="polite"
-      ></div>
+      <div class="gallery" id="gallery"></div>
 
-      <p id="empty-message" class="empty-message">
-        No artwork added yet.
-      </p>
+    </div>
 
-    </section>
+  </section>
 
 
-    <!-- ABOUT -->
-    <section id="about" class="section about">
 
-      <div class="section-number">
-        <span>02</span>
-        ABOUT THE ARTIST
-      </div>
+  <!-- ABOUT -->
+
+  <section class="about" id="about">
+
+    <div class="container">
+
+      <span class="eyebrow">
+        003 / About
+      </span>
+
 
       <div class="about-layout">
 
         <div class="about-title">
-          <h2>
-            Made by
-            <span>JayDuh.</span>
-          </h2>
+
+          ABOUT<br>
+
+          <span class="outline">
+            JAYDUH.
+          </span>
+
         </div>
+
 
         <div class="about-copy">
 
-          <p class="about-lead">
-            I'm an artist focused on character art, illustrations, and
-            thumbnails.
+          <p>
+            I'm an artist focused on character art,
+            illustrations and thumbnails.
           </p>
 
           <p>
-            JayDuh Studio is my place to collect the things I create,
-            experiment with new ideas, and give my artwork somewhere to live.
+            JayDuh Studio is basically my own little
+            archive for everything I create. It's a place
+            to show finished work, experiment with ideas,
+            and keep track of how my art changes over time.
           </p>
 
-          <div class="about-signature">
-            <span>J</span>
-            <div>
-              <strong>JayDuh Studio</strong>
-              <small>ART / DESIGN / CREATION</small>
+
+          <div class="signature">
+
+            <div class="signature-mark">
+              J
             </div>
+
+            <div class="signature-text">
+
+              <strong>
+                JayDuh Studio
+              </strong>
+
+              <span>
+                ART / DESIGN / CREATION
+              </span>
+
+            </div>
+
           </div>
 
         </div>
 
       </div>
 
-    </section>
-
-
-    <!-- SUPPORT -->
-    <section id="support" class="support">
-
-      <div class="support-inner">
-
-        <div class="section-number">
-          <span>03</span>
-          SUPPORT THE STUDIO
-        </div>
-
-        <div class="support-heading">
-
-          <h2>
-            Want to support
-            <span>the art?</span>
-          </h2>
-
-          <p>
-            Hang out, support the work, or just follow along.
-          </p>
-
-        </div>
-
-
-        <div class="support-cards">
-
-          <a
-            class="support-card"
-            data-link="discord"
-            href="#"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-
-            <span class="card-number">01</span>
-
-            <span class="card-icon discord-icon">
-              ↗
-            </span>
-
-            <div class="card-content">
-              <strong>Discord</strong>
-              <small>Come hang out</small>
-            </div>
-
-            <span class="arrow">↗</span>
-
-          </a>
-
-
-          <a
-            class="support-card"
-            data-link="cashapp"
-            href="#"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-
-            <span class="card-number">02</span>
-
-            <span class="card-icon">
-              $
-            </span>
-
-            <div class="card-content">
-              <strong>Cash App</strong>
-              <small>Direct tip / pay</small>
-            </div>
-
-            <span class="arrow">↗</span>
-
-          </a>
-
-
-          <a
-            class="support-card"
-            data-link="cashapp"
-            href="#"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-
-            <span class="card-number">03</span>
-
-            <span class="card-icon">
-              +
-            </span>
-
-            <div class="card-content">
-              <strong>Donations</strong>
-              <small>Every bit helps</small>
-            </div>
-
-            <span class="arrow">↗</span>
-
-          </a>
-
-        </div>
-
-      </div>
-
-    </section>
-
-  </main>
-
-
-  <!-- FOOTER -->
-  <footer>
-
-    <div class="footer-inner">
-
-      <div class="footer-brand">
-        <strong>JayDuh<span>Studio</span></strong>
-        <small>Digital art & character design</small>
-      </div>
-
-      <span>
-        © <span id="year"></span> JayDuh Studio
-      </span>
-
-      <span>
-        Made by JayDuh
-      </span>
-
     </div>
 
-  </footer>
+  </section>
 
 
-  <!-- LIGHTBOX -->
-  <dialog id="lightbox" class="lightbox" aria-label="Artwork detail view">
 
-    <button
-      class="lightbox-close"
-      aria-label="Close modal"
-    >
-      ✕
-    </button>
+  <!-- SUPPORT -->
 
-    <button
-      class="lightbox-prev"
-      aria-label="Previous artwork"
-    >
-      ‹
-    </button>
+  <section class="support" id="support">
 
-    <div class="lightbox-content">
+    <div class="container">
 
-      <div class="lightbox-image-wrap">
-        <img id="lightbox-image" src="" alt="">
+      <span class="eyebrow">
+        004 / Support
+      </span>
+
+
+      <div class="support-heading">
+
+        <h2>
+          KEEP THE<br>
+          <span>STUDIO MOVING.</span>
+        </h2>
+
+        <p>
+          Want to keep up with new artwork,
+          hang out, or support what I'm making?
+          Everything you need is right here.
+        </p>
+
       </div>
 
-      <div class="lightbox-caption">
 
-        <div>
-          <span>JAYDUH STUDIO</span>
-          <strong id="lightbox-title"></strong>
-        </div>
+      <div class="support-grid">
 
-        <span id="lightbox-category"></span>
+
+        <a
+          class="support-card"
+          href="https://discord.com/users/jayduhart"
+          target="_blank"
+        >
+
+          <span class="support-card-number">
+            01 / COMMUNITY
+          </span>
+
+          <div class="support-icon">
+            ↗
+          </div>
+
+          <div>
+
+            <h3>
+              Discord
+            </h3>
+
+            <p>
+              Come hang out
+            </p>
+
+          </div>
+
+          <span class="support-arrow">
+            ↗
+          </span>
+
+        </a>
+
+
+
+        <a
+          class="support-card"
+          href="https://cash.app/$JosiyahPerez1126"
+          target="_blank"
+        >
+
+          <span class="support-card-number">
+            02 / SUPPORT
+          </span>
+
+          <div class="support-icon">
+            $
+          </div>
+
+          <div>
+
+            <h3>
+              Cash App
+            </h3>
+
+            <p>
+              Direct tip or payment
+            </p>
+
+          </div>
+
+          <span class="support-arrow">
+            ↗
+          </span>
+
+        </a>
+
+
+
+        <a
+          class="support-card"
+          href="https://cash.app/$JosiyahPerez1126"
+          target="_blank"
+        >
+
+          <span class="support-card-number">
+            03 / DONATE
+          </span>
+
+          <div class="support-icon">
+            +
+          </div>
+
+          <div>
+
+            <h3>
+              Donations
+            </h3>
+
+            <p>
+              Help support the studio
+            </p>
+
+          </div>
+
+          <span class="support-arrow">
+            ↗
+          </span>
+
+        </a>
+
 
       </div>
 
     </div>
 
-    <button
-      class="lightbox-next"
-      aria-label="Next artwork"
-    >
-      ›
-    </button>
-
-  </dialog>
+  </section>
 
 
-  <script src="config.js" defer></script>
-  <script src="gallery.js" defer></script>
-  <script src="script.js" defer></script>
+</main>
+
+
+
+<footer>
+
+  <div class="container footer">
+
+    <span>
+      © 2026 JAYDUH STUDIO
+    </span>
+
+    <span>
+      MADE BY JAYDUH
+    </span>
+
+  </div>
+
+</footer>
+
+
+
+<!-- LIGHTBOX -->
+
+<dialog id="lightbox">
+
+  <button
+    class="lightbox-close"
+    id="closeLightbox"
+  >
+    ✕
+  </button>
+
+  <img
+    id="lightboxImage"
+    class="lightbox-image"
+    src=""
+    alt=""
+  >
+
+  <div class="lightbox-bottom">
+
+    <span
+      id="lightboxTitle"
+      class="lightbox-title"
+    ></span>
+
+    <span
+      id="lightboxCategory"
+      class="lightbox-category"
+    ></span>
+
+  </div>
+
+</dialog>
+
+
+
+<script>
+
+const GALLERY = {
+
+  headshots: [
+    {
+      title: "Clowwy",
+      file: "Clowwy.png"
+    },
+    {
+      title: "Wanno",
+      file: "Wanno.png"
+    },
+    {
+      title: "Sin",
+      file: "Sin.png"
+    },
+    {
+      title: "Adm1n",
+      file: "Adm1n.png"
+    },
+    {
+      title: "Done",
+      file: "Done.png"
+    },
+    {
+      title: "Plaq",
+      file: "Plaq.png"
+    }
+  ],
+
+  "half-body": [
+    {
+      title: "Parent and Child",
+      file: "image - 2026-10-02T215146.437.png"
+    },
+    {
+      title: "Green Tie",
+      file: "image - 2026-09-21T165015.959.png"
+    },
+    {
+      title: "Butterflies",
+      file: "image (86).png"
+    },
+    {
+      title: "Crowned Kitty",
+      file: "image (83).png"
+    },
+    {
+      title: "Venti",
+      file: "Venti (1).png"
+    }
+  ],
+
+  "full-body": [
+    {
+      title: "Resting",
+      file: "image - 2026-10-01T072946.618.png"
+    },
+    {
+      title: "Looking Up",
+      file: "image (96).png"
+    },
+    {
+      title: "Crowned",
+      file: "image (56).png"
+    },
+    {
+      title: "Spicify",
+      file: "Spicify.png"
+    },
+    {
+      title: "BakU",
+      file: "BakU.png"
+    }
+  ],
+
+  thumbnails: [
+    {
+      title: "Adm1n Gun",
+      file: "Adm2n.png"
+    }
+  ]
+
+};
+
+
+
+const gallery = document.getElementById("gallery");
+
+const filters = document.querySelectorAll(".filter");
+
+const lightbox = document.getElementById("lightbox");
+
+const lightboxImage =
+  document.getElementById("lightboxImage");
+
+const lightboxTitle =
+  document.getElementById("lightboxTitle");
+
+const lightboxCategory =
+  document.getElementById("lightboxCategory");
+
+const closeLightbox =
+  document.getElementById("closeLightbox");
+
+
+
+let currentCategory = "headshots";
+
+
+
+function categoryName(category) {
+
+  return category
+    .replace("-", " ")
+    .replace(/\b\w/g, letter => letter.toUpperCase());
+
+}
+
+
+
+function renderGallery(category) {
+
+  currentCategory = category;
+
+  gallery.innerHTML = "";
+
+  const artwork = GALLERY[category] || [];
+
+  artwork.forEach((piece, index) => {
+
+    const card = document.createElement("article");
+
+    card.className = "piece";
+
+    card.innerHTML = `
+
+      <img
+        src="${piece.file}"
+        alt="${piece.title}"
+        loading="lazy"
+      >
+
+      <div class="piece-overlay">
+
+        <span class="piece-index">
+          ${String(index + 1).padStart(2, "0")}
+        </span>
+
+        <div class="piece-info">
+
+          <strong>
+            ${piece.title}
+          </strong>
+
+          <span>
+            ${categoryName(category)}
+          </span>
+
+        </div>
+
+      </div>
+
+    `;
+
+
+    card.addEventListener("click", () => {
+
+      lightboxImage.src = piece.file;
+
+      lightboxImage.alt = piece.title;
+
+      lightboxTitle.textContent = piece.title;
+
+      lightboxCategory.textContent =
+        categoryName(category);
+
+      lightbox.showModal();
+
+    });
+
+
+    gallery.appendChild(card);
+
+  });
+
+}
+
+
+
+filters.forEach(filter => {
+
+  filter.addEventListener("click", () => {
+
+    filters.forEach(button => {
+      button.classList.remove("active");
+    });
+
+    filter.classList.add("active");
+
+    renderGallery(
+      filter.dataset.category
+    );
+
+  });
+
+});
+
+
+
+closeLightbox.addEventListener("click", () => {
+
+  lightbox.close();
+
+});
+
+
+
+lightbox.addEventListener("click", event => {
+
+  if (event.target === lightbox) {
+    lightbox.close();
+  }
+
+});
+
+
+
+document.addEventListener("keydown", event => {
+
+  if (
+    event.key === "Escape" &&
+    lightbox.open
+  ) {
+
+    lightbox.close();
+
+  }
+
+});
+
+
+
+renderGallery("headshots");
+
+</script>
 
 </body>
 </html>
