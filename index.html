@@ -1,10 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>JayDuh Studio — Art & Character Design</title>
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="description"
+    content="JayDuh Studio — digital art, character design, illustrations and thumbnails."
+  >
+
+  <title>JayDuh Studio</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,1205 +25,8 @@
     rel="stylesheet"
   >
 
-  <style>
+  <link rel="stylesheet" href="style.css">
 
-    :root {
-      --black: #050505;
-      --black-2: #090909;
-      --white: #f2f0eb;
-      --gray: #858582;
-      --gray-2: #555552;
-
-      --purple: #7768ff;
-      --purple-light: #a59dff;
-
-      --line: rgba(255,255,255,.11);
-      --line-soft: rgba(255,255,255,.055);
-
-      --ease: cubic-bezier(.16,1,.3,1);
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-      background: var(--black);
-    }
-
-    body {
-      background: var(--black);
-      color: var(--white);
-      font-family: "DM Sans", sans-serif;
-      overflow-x: hidden;
-    }
-
-    body::selection {
-      background: var(--purple);
-      color: white;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    button {
-      font: inherit;
-    }
-
-    img {
-      display: block;
-      max-width: 100%;
-    }
-
-
-    /* ================================
-       GLOBAL
-    ================================= */
-
-    .noise {
-      position: fixed;
-      inset: 0;
-      z-index: 9999;
-      pointer-events: none;
-      opacity: .035;
-
-      background-image:
-        url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E");
-    }
-
-    .container {
-      width: min(1380px, calc(100% - 64px));
-      margin: auto;
-    }
-
-    .mono {
-      font-family: "DM Mono", monospace;
-    }
-
-    .eyebrow {
-      color: var(--gray);
-      font-family: "DM Mono", monospace;
-      font-size: 10px;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-    }
-
-    .purple {
-      color: var(--purple-light);
-    }
-
-
-    /* ================================
-       HEADER
-    ================================= */
-
-    header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      z-index: 1000;
-
-      padding: 24px 32px;
-
-      mix-blend-mode: normal;
-    }
-
-    .nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-
-      max-width: 1440px;
-      margin: auto;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 11px;
-
-      font-family: "Manrope", sans-serif;
-      font-weight: 800;
-      letter-spacing: -.05em;
-      font-size: 18px;
-    }
-
-    .brand-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--purple);
-
-      box-shadow: 0 0 20px var(--purple);
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 30px;
-    }
-
-    .nav-links a {
-      color: #aaa;
-      font-family: "DM Mono", monospace;
-      font-size: 10px;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-
-      transition: color .25s ease;
-    }
-
-    .nav-links a:hover {
-      color: white;
-    }
-
-    .nav-contact {
-      display: flex;
-      align-items: center;
-      gap: 9px;
-
-      padding: 9px 14px;
-
-      border: 1px solid var(--line);
-      border-radius: 100px;
-
-      background: rgba(255,255,255,.035);
-    }
-
-    .nav-contact span {
-      color: var(--purple-light);
-    }
-
-
-    /* ================================
-       HERO
-    ================================= */
-
-    .hero {
-      position: relative;
-      min-height: 100vh;
-
-      display: flex;
-      align-items: center;
-
-      overflow: hidden;
-    }
-
-    .hero::before {
-      content: "";
-
-      position: absolute;
-      width: 700px;
-      height: 700px;
-
-      right: -220px;
-      top: -180px;
-
-      border-radius: 50%;
-
-      background: var(--purple);
-      filter: blur(180px);
-
-      opacity: .07;
-    }
-
-    .hero::after {
-      content: "";
-
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 0;
-
-      height: 250px;
-
-      background: linear-gradient(
-        transparent,
-        var(--black)
-      );
-
-      pointer-events: none;
-    }
-
-    .hero-inner {
-      position: relative;
-      z-index: 2;
-
-      width: min(1380px, calc(100% - 64px));
-      margin: auto;
-
-      padding-top: 90px;
-    }
-
-    .hero-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-
-      margin-bottom: 45px;
-    }
-
-    .hero-intro {
-      max-width: 330px;
-
-      color: var(--gray);
-      font-size: 13px;
-      line-height: 1.7;
-    }
-
-    .hero-year {
-      color: var(--gray-2);
-
-      font-family: "DM Mono", monospace;
-      font-size: 11px;
-      letter-spacing: .15em;
-    }
-
-    .hero-title {
-      position: relative;
-
-      font-family: "Manrope", sans-serif;
-      font-size: clamp(90px, 15vw, 235px);
-      font-weight: 800;
-      line-height: .76;
-      letter-spacing: -.105em;
-
-      white-space: nowrap;
-    }
-
-    .hero-title .outline {
-      color: transparent;
-      -webkit-text-stroke: 1px rgba(255,255,255,.55);
-    }
-
-    .hero-title .purple-word {
-      color: var(--purple);
-      text-shadow: 0 0 100px rgba(119,104,255,.18);
-    }
-
-    .hero-art {
-      position: relative;
-
-      width: min(560px, 47vw);
-      height: 420px;
-
-      margin-left: auto;
-      margin-top: -45px;
-      margin-right: 5vw;
-    }
-
-    .hero-card {
-      position: absolute;
-
-      width: 280px;
-      height: 370px;
-
-      overflow: hidden;
-
-      background: #111;
-
-      border: 1px solid var(--line);
-
-      box-shadow: 0 40px 100px rgba(0,0,0,.6);
-    }
-
-    .hero-card img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-
-      transition: transform 1s var(--ease);
-    }
-
-    .hero-card:hover img {
-      transform: scale(1.06);
-    }
-
-    .hero-card-one {
-      right: 130px;
-      top: 0;
-
-      transform: rotate(3deg);
-      z-index: 2;
-    }
-
-    .hero-card-two {
-      right: 0;
-      top: 80px;
-
-      transform: rotate(9deg);
-      opacity: .55;
-
-      z-index: 1;
-    }
-
-    .hero-card-label {
-      position: absolute;
-
-      left: 15px;
-      bottom: 15px;
-
-      z-index: 3;
-
-      color: white;
-
-      font-family: "DM Mono", monospace;
-      font-size: 8px;
-      letter-spacing: .14em;
-
-      text-transform: uppercase;
-    }
-
-    .hero-card-label span {
-      color: var(--purple-light);
-    }
-
-    .hero-index {
-      position: absolute;
-
-      right: 0;
-      bottom: 35px;
-
-      color: rgba(255,255,255,.12);
-
-      font-family: "Manrope", sans-serif;
-      font-size: 100px;
-      font-weight: 800;
-
-      line-height: .8;
-    }
-
-    .scroll {
-      position: absolute;
-
-      bottom: 30px;
-      left: 32px;
-
-      z-index: 5;
-
-      display: flex;
-      align-items: center;
-      gap: 12px;
-
-      color: var(--gray);
-
-      font-family: "DM Mono", monospace;
-      font-size: 8px;
-      letter-spacing: .15em;
-    }
-
-    .scroll-line {
-      width: 45px;
-      height: 1px;
-
-      background: var(--gray-2);
-    }
-
-
-    /* ================================
-       MARQUEE
-    ================================= */
-
-    .marquee {
-      overflow: hidden;
-
-      padding: 23px 0;
-
-      border-top: 1px solid var(--line-soft);
-      border-bottom: 1px solid var(--line-soft);
-
-      white-space: nowrap;
-    }
-
-    .marquee-track {
-      display: inline-flex;
-      align-items: center;
-
-      animation: marquee 25s linear infinite;
-    }
-
-    .marquee-item {
-      display: inline-flex;
-      align-items: center;
-      gap: 30px;
-
-      padding-right: 30px;
-
-      color: #67676a;
-
-      font-family: "Manrope", sans-serif;
-      font-size: 13px;
-      font-weight: 700;
-
-      letter-spacing: .05em;
-      text-transform: uppercase;
-    }
-
-    .marquee-item i {
-      width: 5px;
-      height: 5px;
-
-      background: var(--purple);
-
-      border-radius: 50%;
-    }
-
-    @keyframes marquee {
-      from {
-        transform: translateX(0);
-      }
-
-      to {
-        transform: translateX(-50%);
-      }
-    }
-
-
-    /* ================================
-       INTRO
-    ================================= */
-
-    .intro {
-      padding: 180px 0;
-    }
-
-    .intro-grid {
-      display: grid;
-      grid-template-columns: 180px 1fr;
-      gap: 70px;
-    }
-
-    .intro-number {
-      color: var(--purple);
-
-      font-family: "DM Mono", monospace;
-      font-size: 12px;
-    }
-
-    .intro-copy {
-      max-width: 900px;
-    }
-
-    .intro-copy h2 {
-      margin-bottom: 35px;
-
-      font-family: "Manrope", sans-serif;
-      font-size: clamp(45px, 6vw, 90px);
-      line-height: .95;
-      letter-spacing: -.075em;
-    }
-
-    .intro-copy h2 span {
-      color: var(--gray);
-    }
-
-    .intro-copy p {
-      max-width: 650px;
-
-      color: var(--gray);
-
-      font-size: 16px;
-      line-height: 1.8;
-    }
-
-
-    /* ================================
-       GALLERY
-    ================================= */
-
-    .work {
-      padding-bottom: 180px;
-    }
-
-    .work-heading {
-      display: flex;
-      justify-content: space-between;
-      align-items: end;
-
-      padding-bottom: 35px;
-
-      border-bottom: 1px solid var(--line);
-    }
-
-    .work-heading h2 {
-      margin-top: 12px;
-
-      font-family: "Manrope", sans-serif;
-      font-size: clamp(55px, 8vw, 110px);
-      line-height: .8;
-      letter-spacing: -.085em;
-    }
-
-    .work-heading h2 span {
-      color: var(--purple);
-    }
-
-    .work-description {
-      width: 260px;
-
-      color: var(--gray);
-
-      font-size: 12px;
-      line-height: 1.7;
-    }
-
-    .filters {
-      display: flex;
-      gap: 8px;
-
-      padding: 20px 0 35px;
-
-      overflow-x: auto;
-    }
-
-    .filter {
-      flex-shrink: 0;
-
-      padding: 10px 16px;
-
-      color: var(--gray);
-
-      background: transparent;
-
-      border: 1px solid var(--line);
-      border-radius: 100px;
-
-      cursor: pointer;
-
-      font-family: "DM Mono", monospace;
-      font-size: 9px;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-
-      transition: .25s ease;
-    }
-
-    .filter:hover {
-      color: white;
-      border-color: rgba(255,255,255,.3);
-    }
-
-    .filter.active {
-      color: #080808;
-      background: white;
-      border-color: white;
-    }
-
-    .gallery {
-      display: grid;
-
-      grid-template-columns:
-        repeat(12, 1fr);
-
-      gap: 18px;
-    }
-
-    .piece {
-      position: relative;
-
-      overflow: hidden;
-
-      background: #111;
-
-      border: 1px solid var(--line);
-
-      cursor: pointer;
-
-      transition:
-        transform .6s var(--ease),
-        border-color .4s ease;
-    }
-
-    .piece:hover {
-      transform: translateY(-7px);
-      border-color: rgba(255,255,255,.25);
-    }
-
-    .piece:nth-child(1) {
-      grid-column: span 7;
-      aspect-ratio: 1.15 / 1;
-    }
-
-    .piece:nth-child(2) {
-      grid-column: span 5;
-      aspect-ratio: .9 / 1;
-    }
-
-    .piece:nth-child(3) {
-      grid-column: span 4;
-      aspect-ratio: .85 / 1;
-    }
-
-    .piece:nth-child(4) {
-      grid-column: span 4;
-      aspect-ratio: .85 / 1;
-    }
-
-    .piece:nth-child(5) {
-      grid-column: span 4;
-      aspect-ratio: .85 / 1;
-    }
-
-    .piece:nth-child(n+6) {
-      grid-column: span 4;
-      aspect-ratio: 1 / 1.15;
-    }
-
-    .piece img {
-      width: 100%;
-      height: 100%;
-
-      object-fit: cover;
-
-      transition:
-        transform 1s var(--ease),
-        filter .5s ease;
-    }
-
-    .piece:hover img {
-      transform: scale(1.055);
-      filter: brightness(.72);
-    }
-
-    .piece-overlay {
-      position: absolute;
-      inset: 0;
-
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-
-      padding: 20px;
-
-      background:
-        linear-gradient(
-          to bottom,
-          rgba(0,0,0,.25),
-          transparent 35%,
-          rgba(0,0,0,.8)
-        );
-
-      opacity: 0;
-
-      transition: opacity .4s ease;
-    }
-
-    .piece:hover .piece-overlay {
-      opacity: 1;
-    }
-
-    .piece-index {
-      align-self: flex-end;
-
-      color: white;
-
-      font-family: "DM Mono", monospace;
-      font-size: 9px;
-    }
-
-    .piece-info strong {
-      display: block;
-
-      margin-bottom: 5px;
-
-      font-family: "Manrope", sans-serif;
-      font-size: 18px;
-    }
-
-    .piece-info span {
-      color: #aaa;
-
-      font-family: "DM Mono", monospace;
-      font-size: 8px;
-      letter-spacing: .15em;
-      text-transform: uppercase;
-    }
-
-
-    /* ================================
-       ABOUT
-    ================================= */
-
-    .about {
-      padding: 150px 0;
-
-      border-top: 1px solid var(--line);
-    }
-
-    .about-layout {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-
-      gap: 100px;
-
-      margin-top: 60px;
-    }
-
-    .about-title {
-      font-family: "Manrope", sans-serif;
-      font-size: clamp(50px, 7vw, 100px);
-      font-weight: 800;
-
-      line-height: .85;
-      letter-spacing: -.08em;
-    }
-
-    .about-title .outline {
-      color: transparent;
-      -webkit-text-stroke: 1px rgba(255,255,255,.5);
-    }
-
-    .about-copy {
-      padding-top: 12px;
-    }
-
-    .about-copy p {
-      max-width: 520px;
-
-      color: var(--gray);
-
-      font-size: 16px;
-      line-height: 1.85;
-    }
-
-    .about-copy p + p {
-      margin-top: 25px;
-    }
-
-    .signature {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-
-      margin-top: 50px;
-      padding-top: 25px;
-
-      border-top: 1px solid var(--line);
-    }
-
-    .signature-mark {
-      display: grid;
-      place-items: center;
-
-      width: 45px;
-      height: 45px;
-
-      border: 1px solid var(--line);
-      border-radius: 50%;
-
-      color: var(--purple);
-
-      font-family: "Manrope", sans-serif;
-      font-weight: 800;
-    }
-
-    .signature-text {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-
-    .signature-text strong {
-      font-size: 12px;
-    }
-
-    .signature-text span {
-      color: var(--gray);
-
-      font-family: "DM Mono", monospace;
-      font-size: 8px;
-      letter-spacing: .12em;
-    }
-
-
-    /* ================================
-       SUPPORT
-    ================================= */
-
-    .support {
-      padding: 150px 0;
-
-      background:
-        radial-gradient(
-          circle at 70% 50%,
-          rgba(119,104,255,.11),
-          transparent 450px
-        );
-
-      border-top: 1px solid var(--line);
-    }
-
-    .support-heading {
-      display: grid;
-      grid-template-columns: 1fr 300px;
-
-      gap: 80px;
-
-      margin-top: 60px;
-    }
-
-    .support-heading h2 {
-      font-family: "Manrope", sans-serif;
-      font-size: clamp(55px, 8vw, 110px);
-      line-height: .82;
-      letter-spacing: -.085em;
-    }
-
-    .support-heading h2 span {
-      color: transparent;
-      -webkit-text-stroke: 1px rgba(255,255,255,.55);
-    }
-
-    .support-heading p {
-      color: var(--gray);
-
-      font-size: 13px;
-      line-height: 1.8;
-    }
-
-    .support-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-
-      gap: 15px;
-
-      margin-top: 70px;
-    }
-
-    .support-card {
-      position: relative;
-
-      min-height: 220px;
-
-      padding: 25px;
-
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-
-      background: #0d0d0e;
-
-      border: 1px solid var(--line);
-
-      transition:
-        transform .5s var(--ease),
-        background .3s ease,
-        border-color .3s ease;
-    }
-
-    .support-card:hover {
-      transform: translateY(-7px);
-
-      background: #111113;
-
-      border-color: rgba(119,104,255,.4);
-    }
-
-    .support-card-number {
-      color: var(--gray-2);
-
-      font-family: "DM Mono", monospace;
-      font-size: 9px;
-    }
-
-    .support-icon {
-      width: 42px;
-      height: 42px;
-
-      display: grid;
-      place-items: center;
-
-      border: 1px solid var(--line);
-      border-radius: 50%;
-
-      color: var(--purple-light);
-
-      font-size: 16px;
-    }
-
-    .support-card h3 {
-      margin-bottom: 5px;
-
-      font-family: "Manrope", sans-serif;
-      font-size: 18px;
-    }
-
-    .support-card p {
-      color: var(--gray);
-
-      font-size: 10px;
-    }
-
-    .support-arrow {
-      position: absolute;
-
-      right: 25px;
-      bottom: 25px;
-
-      color: var(--gray);
-
-      transition: transform .3s var(--ease);
-    }
-
-    .support-card:hover .support-arrow {
-      color: white;
-      transform: translate(4px,-4px);
-    }
-
-
-    /* ================================
-       FOOTER
-    ================================= */
-
-    footer {
-      padding: 40px 0;
-
-      border-top: 1px solid var(--line);
-    }
-
-    .footer {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-
-      color: var(--gray);
-
-      font-family: "DM Mono", monospace;
-      font-size: 8px;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-    }
-
-
-    /* ================================
-       LIGHTBOX
-    ================================= */
-
-    dialog {
-      width: min(1200px, 94vw);
-      max-height: 94vh;
-
-      padding: 0;
-
-      background: #080808;
-      color: white;
-
-      border: 1px solid var(--line);
-
-      box-shadow: 0 50px 150px rgba(0,0,0,.8);
-    }
-
-    dialog::backdrop {
-      background: rgba(0,0,0,.9);
-      backdrop-filter: blur(15px);
-    }
-
-    .lightbox-image {
-      width: 100%;
-      height: 80vh;
-
-      object-fit: contain;
-
-      background: #050505;
-    }
-
-    .lightbox-bottom {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-
-      padding: 18px 25px;
-
-      border-top: 1px solid var(--line);
-    }
-
-    .lightbox-title {
-      font-family: "Manrope", sans-serif;
-      font-size: 15px;
-      font-weight: 700;
-    }
-
-    .lightbox-category {
-      color: var(--gray);
-
-      font-family: "DM Mono", monospace;
-      font-size: 8px;
-      letter-spacing: .15em;
-      text-transform: uppercase;
-    }
-
-    .lightbox-close {
-      position: absolute;
-
-      top: 15px;
-      right: 15px;
-
-      width: 40px;
-      height: 40px;
-
-      color: white;
-
-      background: rgba(0,0,0,.7);
-
-      border: 1px solid var(--line);
-
-      border-radius: 50%;
-
-      cursor: pointer;
-    }
-
-
-    /* ================================
-       MOBILE
-    ================================= */
-
-    @media(max-width: 900px) {
-
-      .container,
-      .hero-inner {
-        width: min(100% - 40px, 1380px);
-      }
-
-      header {
-        padding: 18px 20px;
-      }
-
-      .nav-links a:not(.nav-contact) {
-        display: none;
-      }
-
-      .hero {
-        min-height: 900px;
-      }
-
-      .hero-title {
-        font-size: 18vw;
-        white-space: normal;
-      }
-
-      .hero-art {
-        width: 90vw;
-        margin-right: 0;
-      }
-
-      .intro-grid {
-        grid-template-columns: 1fr;
-        gap: 25px;
-      }
-
-      .gallery {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .piece:nth-child(n) {
-        grid-column: span 1;
-        aspect-ratio: .82 / 1;
-      }
-
-      .about-layout {
-        grid-template-columns: 1fr;
-        gap: 60px;
-      }
-
-      .support-heading {
-        grid-template-columns: 1fr;
-      }
-
-      .support-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-
-    @media(max-width: 600px) {
-
-      .container,
-      .hero-inner {
-        width: calc(100% - 32px);
-      }
-
-      .hero {
-        min-height: 800px;
-      }
-
-      .hero-top {
-        margin-bottom: 30px;
-      }
-
-      .hero-title {
-        font-size: 21vw;
-      }
-
-      .hero-art {
-        height: 350px;
-        margin-top: 20px;
-      }
-
-      .hero-card {
-        width: 190px;
-        height: 270px;
-      }
-
-      .hero-card-one {
-        right: 65px;
-      }
-
-      .hero-card-two {
-        right: 0;
-        top: 50px;
-      }
-
-      .hero-index {
-        font-size: 70px;
-      }
-
-      .scroll {
-        left: 16px;
-      }
-
-      .intro,
-      .work,
-      .about,
-      .support {
-        padding: 100px 0;
-      }
-
-      .work-heading {
-        display: block;
-      }
-
-      .work-description {
-        margin-top: 25px;
-      }
-
-      .gallery {
-        grid-template-columns: 1fr;
-      }
-
-      .piece:nth-child(n) {
-        grid-column: span 1;
-        aspect-ratio: .85 / 1;
-      }
-
-      .piece-overlay {
-        opacity: 1;
-      }
-
-      .footer {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 12px;
-      }
-
-    }
-
-  </style>
 </head>
 
 
@@ -1221,25 +35,43 @@
 <div class="noise"></div>
 
 
+<!-- HEADER -->
+
 <header>
 
   <nav class="nav">
 
     <a href="#home" class="brand">
+
       <span class="brand-dot"></span>
-      JAYDUH STUDIO
+
+      <span>
+        JAYDUH STUDIO
+      </span>
+
     </a>
+
 
     <div class="nav-links">
 
-      <a href="#work">Work</a>
-      <a href="#about">About</a>
-      <a href="#support">Support</a>
+      <a href="#work">
+        Work
+      </a>
+
+      <a href="#about">
+        About
+      </a>
+
+      <a href="#support">
+        Support
+      </a>
 
       <a
         class="nav-contact"
-        href="https://discord.com/users/jayduhart"
+        data-link="discord"
+        href="#"
         target="_blank"
+        rel="noopener noreferrer"
       >
         Discord
         <span>↗</span>
@@ -1247,9 +79,19 @@
 
     </div>
 
+
+    <button
+      class="mobile-menu"
+      aria-label="Open menu"
+      aria-expanded="false"
+    >
+      ☰
+    </button>
+
   </nav>
 
 </header>
+
 
 
 <main id="home">
@@ -1261,13 +103,17 @@
 
     <div class="hero-inner">
 
+
       <div class="hero-top">
 
         <p class="hero-intro">
+
           Digital artist creating characters,
           illustrations, thumbnails and whatever
           else happens to end up on the canvas.
+
         </p>
+
 
         <span class="hero-year">
           2026 / JDS
@@ -1276,41 +122,57 @@
       </div>
 
 
+
       <h1 class="hero-title">
-        JAY<span class="outline">DUH</span><br>
-        <span class="purple-word">STUDIO.</span>
+
+        JAY<span class="outline">DUH</span>
+
+        <br>
+
+        <span class="purple-word">
+          STUDIO.
+        </span>
+
       </h1>
+
 
 
       <div class="hero-art">
 
+
         <div class="hero-card hero-card-one">
 
           <img
-            src="Clowwy.png"
+            src="assets/headshots/Clowwy.png"
             alt="Clowwy artwork"
           >
 
           <div class="hero-card-label">
-            <span>01</span> / HEADSHOT
+
+            <span>01</span>
+            / HEADSHOT
+
           </div>
 
         </div>
 
 
+
         <div class="hero-card hero-card-two">
 
           <img
-            src="Spicify.png"
+            src="assets/full-body/Spicify.png"
             alt="Spicify artwork"
           >
 
         </div>
 
 
+
         <div class="hero-index">
           01
         </div>
+
 
       </div>
 
@@ -1331,7 +193,7 @@
 
   <!-- MARQUEE -->
 
-  <div class="marquee">
+  <section class="marquee">
 
     <div class="marquee-track">
 
@@ -1377,7 +239,7 @@
 
     </div>
 
-  </div>
+  </section>
 
 
 
@@ -1393,18 +255,27 @@
           001
         </span>
 
+
         <div class="intro-copy">
 
           <h2>
+
             I make things
-            <span>people remember.</span>
+
+            <span>
+              people remember.
+            </span>
+
           </h2>
 
+
           <p>
+
             JayDuh Studio is a collection of my artwork,
             characters and ideas. Some pieces are planned.
             Some happen because I wanted to see what would
             happen. Either way, this is where they end up.
+
           </p>
 
         </div>
@@ -1419,55 +290,106 @@
 
   <!-- WORK -->
 
-  <section class="work" id="work">
+  <section
+    class="work"
+    id="work"
+  >
 
     <div class="container">
+
 
       <div class="work-heading">
 
         <div>
 
           <span class="eyebrow">
-            002 / Selected work
+            002 / Selected Work
           </span>
 
+
           <h2>
-            THE<br>
-            <span>GALLERY.</span>
+
+            THE
+
+            <br>
+
+            <span>
+              GALLERY.
+            </span>
+
           </h2>
 
         </div>
 
+
         <p class="work-description">
+
           Characters, illustrations and thumbnails
           from the studio archive.
+
         </p>
 
       </div>
 
 
-      <div class="filters">
 
-        <button class="filter active" data-category="headshots">
+      <div
+        class="filters"
+        role="tablist"
+      >
+
+        <button
+          class="filter active"
+          data-category="headshots"
+          role="tab"
+        >
           Headshots
         </button>
 
-        <button class="filter" data-category="half-body">
+
+        <button
+          class="filter"
+          data-category="half-body"
+          role="tab"
+        >
           Half Body
         </button>
 
-        <button class="filter" data-category="full-body">
+
+        <button
+          class="filter"
+          data-category="full-body"
+          role="tab"
+        >
           Full Body
         </button>
 
-        <button class="filter" data-category="thumbnails">
+
+        <button
+          class="filter"
+          data-category="thumbnails"
+          role="tab"
+        >
           Thumbnails
         </button>
 
       </div>
 
 
-      <div class="gallery" id="gallery"></div>
+
+      <div
+        id="gallery"
+        class="gallery"
+      ></div>
+
+
+      <div
+        id="empty-message"
+        class="empty-message"
+      >
+        No artwork has been added to this category yet.
+      </div>
+
 
     </div>
 
@@ -1477,9 +399,13 @@
 
   <!-- ABOUT -->
 
-  <section class="about" id="about">
+  <section
+    class="about"
+    id="about"
+  >
 
     <div class="container">
+
 
       <span class="eyebrow">
         003 / About
@@ -1488,9 +414,12 @@
 
       <div class="about-layout">
 
+
         <div class="about-title">
 
-          ABOUT<br>
+          ABOUT
+
+          <br>
 
           <span class="outline">
             JAYDUH.
@@ -1499,19 +428,26 @@
         </div>
 
 
+
         <div class="about-copy">
 
-          <p>
+          <p class="about-lead">
+
             I'm an artist focused on character art,
             illustrations and thumbnails.
+
           </p>
 
+
           <p>
+
             JayDuh Studio is basically my own little
             archive for everything I create. It's a place
             to show finished work, experiment with ideas,
             and keep track of how my art changes over time.
+
           </p>
+
 
 
           <div class="signature">
@@ -1519,6 +455,7 @@
             <div class="signature-mark">
               J
             </div>
+
 
             <div class="signature-text">
 
@@ -1534,6 +471,7 @@
 
           </div>
 
+
         </div>
 
       </div>
@@ -1546,29 +484,47 @@
 
   <!-- SUPPORT -->
 
-  <section class="support" id="support">
+  <section
+    class="support"
+    id="support"
+  >
 
     <div class="container">
+
 
       <span class="eyebrow">
         004 / Support
       </span>
 
 
+
       <div class="support-heading">
 
+
         <h2>
-          KEEP THE<br>
-          <span>STUDIO MOVING.</span>
+
+          KEEP THE
+
+          <br>
+
+          <span>
+            STUDIO MOVING.
+          </span>
+
         </h2>
 
+
         <p>
+
           Want to keep up with new artwork,
           hang out, or support what I'm making?
           Everything you need is right here.
+
         </p>
 
+
       </div>
+
 
 
       <div class="support-grid">
@@ -1576,17 +532,21 @@
 
         <a
           class="support-card"
-          href="https://discord.com/users/jayduhart"
+          data-link="discord"
+          href="#"
           target="_blank"
+          rel="noopener noreferrer"
         >
 
           <span class="support-card-number">
             01 / COMMUNITY
           </span>
 
+
           <div class="support-icon">
             ↗
           </div>
+
 
           <div>
 
@@ -1600,6 +560,7 @@
 
           </div>
 
+
           <span class="support-arrow">
             ↗
           </span>
@@ -1610,17 +571,21 @@
 
         <a
           class="support-card"
-          href="https://cash.app/$JosiyahPerez1126"
+          data-link="cashapp"
+          href="#"
           target="_blank"
+          rel="noopener noreferrer"
         >
 
           <span class="support-card-number">
             02 / SUPPORT
           </span>
 
+
           <div class="support-icon">
             $
           </div>
+
 
           <div>
 
@@ -1634,6 +599,7 @@
 
           </div>
 
+
           <span class="support-arrow">
             ↗
           </span>
@@ -1644,17 +610,21 @@
 
         <a
           class="support-card"
-          href="https://cash.app/$JosiyahPerez1126"
+          data-link="cashapp"
+          href="#"
           target="_blank"
+          rel="noopener noreferrer"
         >
 
           <span class="support-card-number">
             03 / DONATE
           </span>
 
+
           <div class="support-icon">
             +
           </div>
+
 
           <div>
 
@@ -1667,6 +637,7 @@
             </p>
 
           </div>
+
 
           <span class="support-arrow">
             ↗
@@ -1686,13 +657,16 @@
 
 
 
+<!-- FOOTER -->
+
 <footer>
 
   <div class="container footer">
 
     <span>
-      © 2026 JAYDUH STUDIO
+      © <span id="year"></span> JAYDUH STUDIO
     </span>
+
 
     <span>
       MADE BY JAYDUH
@@ -1706,285 +680,465 @@
 
 <!-- LIGHTBOX -->
 
-<dialog id="lightbox">
+<dialog
+  id="lightbox"
+  class="lightbox"
+>
 
   <button
-    class="lightbox-close"
     id="closeLightbox"
+    class="lightbox-close"
+    aria-label="Close artwork"
   >
     ✕
   </button>
 
-  <img
-    id="lightboxImage"
-    class="lightbox-image"
-    src=""
-    alt=""
+
+  <button
+    id="lightboxPrev"
+    class="lightbox-nav lightbox-prev"
+    aria-label="Previous artwork"
   >
+    ‹
+  </button>
+
+
+  <div class="lightbox-image-container">
+
+    <img
+      id="lightboxImage"
+      src=""
+      alt=""
+    >
+
+  </div>
+
 
   <div class="lightbox-bottom">
 
-    <span
-      id="lightboxTitle"
-      class="lightbox-title"
-    ></span>
+    <div>
 
-    <span
-      id="lightboxCategory"
-      class="lightbox-category"
-    ></span>
+      <span class="lightbox-label">
+        JAYDUH STUDIO
+      </span>
+
+      <strong id="lightboxTitle"></strong>
+
+    </div>
+
+
+    <span id="lightboxCategory"></span>
 
   </div>
+
+
+  <button
+    id="lightboxNext"
+    class="lightbox-nav lightbox-next"
+    aria-label="Next artwork"
+  >
+    ›
+  </button>
 
 </dialog>
 
 
 
+<script src="config.js"></script>
+<script src="gallery.js"></script>
+
 <script>
 
-const GALLERY = {
+document.addEventListener("DOMContentLoaded", () => {
 
-  headshots: [
-    {
-      title: "Clowwy",
-      file: "Clowwy.png"
-    },
-    {
-      title: "Wanno",
-      file: "Wanno.png"
-    },
-    {
-      title: "Sin",
-      file: "Sin.png"
-    },
-    {
-      title: "Adm1n",
-      file: "Adm1n.png"
-    },
-    {
-      title: "Done",
-      file: "Done.png"
-    },
-    {
-      title: "Plaq",
-      file: "Plaq.png"
+
+  /* =========================
+     CONFIG LINKS
+  ========================= */
+
+  if (typeof SITE_CONFIG !== "undefined") {
+
+    document
+      .querySelectorAll('[data-link="discord"]')
+      .forEach(link => {
+        link.href = SITE_CONFIG.discord;
+      });
+
+
+    document
+      .querySelectorAll('[data-link="cashapp"]')
+      .forEach(link => {
+        link.href = SITE_CONFIG.cashapp;
+      });
+
+  }
+
+
+
+  /* =========================
+     YEAR
+  ========================= */
+
+  const year = document.getElementById("year");
+
+  if (year) {
+    year.textContent = new Date().getFullYear();
+  }
+
+
+
+  /* =========================
+     MOBILE MENU
+  ========================= */
+
+  const mobileMenu =
+    document.querySelector(".mobile-menu");
+
+  const navLinks =
+    document.querySelector(".nav-links");
+
+
+  if (mobileMenu) {
+
+    mobileMenu.addEventListener("click", () => {
+
+      const open =
+        navLinks.classList.toggle("mobile-open");
+
+      mobileMenu.setAttribute(
+        "aria-expanded",
+        open
+      );
+
+    });
+
+  }
+
+
+
+  /* =========================
+     GALLERY
+  ========================= */
+
+  const gallery =
+    document.getElementById("gallery");
+
+  const emptyMessage =
+    document.getElementById("empty-message");
+
+  const filters =
+    document.querySelectorAll(".filter");
+
+
+  const lightbox =
+    document.getElementById("lightbox");
+
+  const lightboxImage =
+    document.getElementById("lightboxImage");
+
+  const lightboxTitle =
+    document.getElementById("lightboxTitle");
+
+  const lightboxCategory =
+    document.getElementById("lightboxCategory");
+
+  const closeLightbox =
+    document.getElementById("closeLightbox");
+
+  const lightboxPrev =
+    document.getElementById("lightboxPrev");
+
+  const lightboxNext =
+    document.getElementById("lightboxNext");
+
+
+  let currentCategory = "headshots";
+
+  let currentArtworkIndex = 0;
+
+
+
+  function categoryName(category) {
+
+    return category
+      .replace("-", " ")
+      .replace(/\b\w/g, char =>
+        char.toUpperCase()
+      );
+
+  }
+
+
+
+  function imagePath(category, file) {
+
+    return `assets/${category}/${file}`;
+
+  }
+
+
+
+  function openArtwork(index) {
+
+    const artwork =
+      GALLERY[currentCategory] || [];
+
+    if (!artwork.length) return;
+
+
+    currentArtworkIndex =
+      (index + artwork.length) %
+      artwork.length;
+
+
+    const piece =
+      artwork[currentArtworkIndex];
+
+
+    lightboxImage.src =
+      imagePath(
+        currentCategory,
+        piece.file
+      );
+
+
+    lightboxImage.alt =
+      piece.title;
+
+
+    lightboxTitle.textContent =
+      piece.title;
+
+
+    lightboxCategory.textContent =
+      categoryName(
+        currentCategory
+      );
+
+
+    if (!lightbox.open) {
+      lightbox.showModal();
     }
-  ],
 
-  "half-body": [
-    {
-      title: "Parent and Child",
-      file: "image - 2026-10-02T215146.437.png"
-    },
-    {
-      title: "Green Tie",
-      file: "image - 2026-09-21T165015.959.png"
-    },
-    {
-      title: "Butterflies",
-      file: "image (86).png"
-    },
-    {
-      title: "Crowned Kitty",
-      file: "image (83).png"
-    },
-    {
-      title: "Venti",
-      file: "Venti (1).png"
+  }
+
+
+
+  function renderGallery(category) {
+
+    currentCategory = category;
+
+    gallery.innerHTML = "";
+
+
+    const artwork =
+      GALLERY[category] || [];
+
+
+    if (!artwork.length) {
+
+      emptyMessage.style.display =
+        "block";
+
+      return;
+
     }
-  ],
-
-  "full-body": [
-    {
-      title: "Resting",
-      file: "image - 2026-10-01T072946.618.png"
-    },
-    {
-      title: "Looking Up",
-      file: "image (96).png"
-    },
-    {
-      title: "Crowned",
-      file: "image (56).png"
-    },
-    {
-      title: "Spicify",
-      file: "Spicify.png"
-    },
-    {
-      title: "BakU",
-      file: "BakU.png"
-    }
-  ],
-
-  thumbnails: [
-    {
-      title: "Adm1n Gun",
-      file: "Adm2n.png"
-    }
-  ]
-
-};
 
 
-
-const gallery = document.getElementById("gallery");
-
-const filters = document.querySelectorAll(".filter");
-
-const lightbox = document.getElementById("lightbox");
-
-const lightboxImage =
-  document.getElementById("lightboxImage");
-
-const lightboxTitle =
-  document.getElementById("lightboxTitle");
-
-const lightboxCategory =
-  document.getElementById("lightboxCategory");
-
-const closeLightbox =
-  document.getElementById("closeLightbox");
+    emptyMessage.style.display =
+      "none";
 
 
+    artwork.forEach((piece, index) => {
 
-let currentCategory = "headshots";
-
-
-
-function categoryName(category) {
-
-  return category
-    .replace("-", " ")
-    .replace(/\b\w/g, letter => letter.toUpperCase());
-
-}
+      const card =
+        document.createElement("article");
 
 
+      card.className =
+        "piece";
 
-function renderGallery(category) {
 
-  currentCategory = category;
+      const image =
+        imagePath(
+          category,
+          piece.file
+        );
 
-  gallery.innerHTML = "";
 
-  const artwork = GALLERY[category] || [];
+      card.innerHTML = `
 
-  artwork.forEach((piece, index) => {
+        <img
+          src="${image}"
+          alt="${piece.title}"
+          loading="lazy"
+        >
 
-    const card = document.createElement("article");
+        <div class="piece-overlay">
 
-    card.className = "piece";
+          <span class="piece-index">
+            ${String(index + 1).padStart(2, "0")}
+          </span>
 
-    card.innerHTML = `
+          <div class="piece-info">
 
-      <img
-        src="${piece.file}"
-        alt="${piece.title}"
-        loading="lazy"
-      >
+            <strong>
+              ${piece.title}
+            </strong>
 
-      <div class="piece-overlay">
+            <span>
+              ${categoryName(category)}
+            </span>
 
-        <span class="piece-index">
-          ${String(index + 1).padStart(2, "0")}
-        </span>
+          </div>
 
-        <div class="piece-info">
-
-          <strong>
-            ${piece.title}
-          </strong>
-
-          <span>
-            ${categoryName(category)}
+          <span class="piece-open">
+            VIEW ↗
           </span>
 
         </div>
 
-      </div>
-
-    `;
+      `;
 
 
-    card.addEventListener("click", () => {
+      card.addEventListener(
+        "click",
+        () => openArtwork(index)
+      );
 
-      lightboxImage.src = piece.file;
 
-      lightboxImage.alt = piece.title;
-
-      lightboxTitle.textContent = piece.title;
-
-      lightboxCategory.textContent =
-        categoryName(category);
-
-      lightbox.showModal();
+      gallery.appendChild(card);
 
     });
 
-
-    gallery.appendChild(card);
-
-  });
-
-}
+  }
 
 
 
-filters.forEach(filter => {
+  filters.forEach(filter => {
 
-  filter.addEventListener("click", () => {
+    filter.addEventListener(
+      "click",
+      () => {
 
-    filters.forEach(button => {
-      button.classList.remove("active");
-    });
+        filters.forEach(button => {
 
-    filter.classList.add("active");
+          button.classList.remove(
+            "active"
+          );
 
-    renderGallery(
-      filter.dataset.category
+          button.setAttribute(
+            "aria-selected",
+            "false"
+          );
+
+        });
+
+
+        filter.classList.add("active");
+
+        filter.setAttribute(
+          "aria-selected",
+          "true"
+        );
+
+
+        renderGallery(
+          filter.dataset.category
+        );
+
+      }
     );
 
   });
 
+
+
+  closeLightbox.addEventListener(
+    "click",
+    () => lightbox.close()
+  );
+
+
+
+  lightboxPrev.addEventListener(
+    "click",
+    () => {
+
+      openArtwork(
+        currentArtworkIndex - 1
+      );
+
+    }
+  );
+
+
+
+  lightboxNext.addEventListener(
+    "click",
+    () => {
+
+      openArtwork(
+        currentArtworkIndex + 1
+      );
+
+    }
+  );
+
+
+
+  lightbox.addEventListener(
+    "click",
+    event => {
+
+      if (
+        event.target === lightbox
+      ) {
+
+        lightbox.close();
+
+      }
+
+    }
+  );
+
+
+
+  document.addEventListener(
+    "keydown",
+    event => {
+
+      if (!lightbox.open) return;
+
+
+      if (event.key === "ArrowLeft") {
+
+        openArtwork(
+          currentArtworkIndex - 1
+        );
+
+      }
+
+
+      if (event.key === "ArrowRight") {
+
+        openArtwork(
+          currentArtworkIndex + 1
+        );
+
+      }
+
+    }
+  );
+
+
+
+  /* Start gallery */
+
+  renderGallery("headshots");
+
+
 });
-
-
-
-closeLightbox.addEventListener("click", () => {
-
-  lightbox.close();
-
-});
-
-
-
-lightbox.addEventListener("click", event => {
-
-  if (event.target === lightbox) {
-    lightbox.close();
-  }
-
-});
-
-
-
-document.addEventListener("keydown", event => {
-
-  if (
-    event.key === "Escape" &&
-    lightbox.open
-  ) {
-
-    lightbox.close();
-
-  }
-
-});
-
-
-
-renderGallery("headshots");
 
 </script>
 
