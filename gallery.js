@@ -42,6 +42,6 @@ const GALLERY = {
   ],
 
   thumbnails: [
-    { title: "Adm1n Gun", file: "Adm1n_2.png" }
+    { title: "Adm1n Gun", file: "Adm1n.png" }
   ]
 };
